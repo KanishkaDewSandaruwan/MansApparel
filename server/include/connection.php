@@ -1,0 +1,1 @@
+<?php $con =  mysqli_connect("localhost", "root", "" , "mens_apparal_db") or die("Database Connection Fail"); ?>
