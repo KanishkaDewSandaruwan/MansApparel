@@ -109,7 +109,7 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'SettingImag
 
 }
 else if (isset($_GET['function_code']) && $_GET['function_code'] == 'checkPasswordByEmail') {
-    checkuserPasswordByName($_POST);
+    checkcustomerPasswordByName($_POST);
 }
 else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImageUpload') {
 

@@ -68,12 +68,31 @@ function getAllSubCategory($cat_id)
     return mysqli_query($con, $viewcat);
 }
 
+function AllSubCategory()
+{
+    include 'connection.php';
+
+    $viewcat = "SELECT * FROM category WHERE is_deleted = '0' AND sub_category != '0'";
+    return mysqli_query($con, $viewcat);
+}
+
 function getAllItems()
 {
 	include 'connection.php';
 
 	$viewcat = "SELECT * FROM products WHERE is_deleted = 0 ";
 	return mysqli_query($con, $viewcat);
+}
+
+function getAllItemsLatest()
+{
+    include 'connection.php';
+
+    $NewDate=Date('y:m:d', strtotime('-7 days'));
+
+    $viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND NOT(date_updated < '$NewDate'  OR date_updated >  now())  ORDER BY date_updated DESC";
+    return mysqli_query($con, $viewcat);
+
 }
 
 function getAllItemsByParentCategory($cat_id)

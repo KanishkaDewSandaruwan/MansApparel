@@ -13,6 +13,49 @@
 
               </div>
             </footer>
+            
+    <div class="modal fade" id="ChangePassword" tabindex="-1" aria-labelledby="ChangePasswordLabel" aria-hidden="true">
+         <div class="modal-dialog ">
+             <div class="modal-content">
+                 <div class="modal-header bg-dark">
+                     <h5 class="modal-title text-white" id="ChangePasswordLabel">Change Password</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body ">
+                     <form method="POST" class="row g-3 needs-validation " novalidate enctype="multipart/form-data">
+                         <div class="col-md-12">
+                             <label for="current_password" class="form-label">Current Password Name</label>
+                             <input type="password" class="form-control" name="current_password" id="current_password"
+                                 placeholder="Current Password Name" required>
+                         </div>
+
+                         <div class="col-md-12">
+                             <label for="new_password" class="form-label">New Password</label>
+                             <input type="password" class="form-control" name="new_password" id="new_password"
+                                 placeholder="New Password" required>
+                         </div>
+
+                         <div class="col-md-12">
+                             <label for="confirm_new_password" class="form-label">Confirm New Password</label>
+                             <input type="password" class="form-control" name="confirm_new_password"
+                                 id="confirm_new_password" placeholder="Confirm New Password" required>
+                         </div>
+
+                         <div class="col-md-12">
+                             <input type="hidden" class="form-control" name="email"
+                                 value="<?php echo $_SESSION['admin']; ?>" id="email">
+                         </div>
+
+
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                     <button type="button"  onclick="changePasswordAdmin(this.form)" class="btn btn-primary">Save
+                         changes</button>
+                 </div>
+                 </form>
+             </div>
+         </div>
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -72,3 +115,4 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+

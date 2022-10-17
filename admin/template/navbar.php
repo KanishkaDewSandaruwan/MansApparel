@@ -1,3 +1,4 @@
+
 <?php include 'template/admin.php'; ?>  
     
     <!-- Layout container -->
@@ -54,7 +55,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ChangePassword" >
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">Change Password</span>
                       </a>
@@ -80,5 +81,6 @@
               </ul>
             </div>
           </nav>
+
 
           <!-- / Navbar -->
