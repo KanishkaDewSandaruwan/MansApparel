@@ -38,12 +38,12 @@ addtoCartProductwithQty = (pid, price) => {
 
     $.ajax({
         method: "POST",
-        url: "pages/add_items_tocart.php?pid=" + pid + "&product_price=" + price + "&qty=" + qty,
+        url: "add_to_cart.php?pid=" + pid + "&product_price=" + price + "&qty=" + qty,
         data: data,
         success: function ($data) {
             console.log($data);
             if ($data === '"Fail"') {
-                window.location.href = 'admin/production/login.php';
+                window.location.href = 'admin/login.php';
             } else {
                 successToastCart();
             }
@@ -71,7 +71,7 @@ addtoCartProduct = (pid, price) => {
         success: function ($data) {
             console.log($data);
             if ($data === '"Fail"') {
-                window.location.href = 'admin/production/login.php';
+                window.location.href = 'admin/login.php';
             } else {
                 successToastCart();
             }
@@ -86,10 +86,20 @@ addtoCartProduct = (pid, price) => {
     });
 }
 
-qtryChange = (ele, cart_id, field) => {
+qtryChange = (cart_id, field, action, currentQty) => {
 
-    var itemid = ele.id;
-    var val = document.getElementById(ele.id).value;
+    let val = 0;
+
+    if(action == 1){
+        var currentQtyint = parseInt(currentQty);
+        let sum = currentQtyint + 1;
+         val = sum.toString();
+    }else{
+        var currentQtyint = parseInt(currentQty);
+        let sum = currentQtyint - 1;
+         val = sum.toString();
+    }
+
 
     var data = {
         cart_id: cart_id,

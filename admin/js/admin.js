@@ -152,6 +152,10 @@ changePasswordAdmin = (form) => {
 
 }
 
+checkColor = (color_id) => {
+
+}
+
 checkPasswordAdmin = (password, email) => {
     const data = {
         password: password,

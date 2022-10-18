@@ -309,6 +309,15 @@ function dataCount($table){
     echo $count;
 }
 
+function dataCountwithCondition($table, $condition){
+	include 'connection.php';
+
+	$counts = "SELECT * FROM $table $condition";
+	$res =  mysqli_query($con,$counts);
+    $count =  mysqli_num_rows($res);
+    echo $count;
+}
+
 function dataforCount($table){
 	include 'connection.php';
 

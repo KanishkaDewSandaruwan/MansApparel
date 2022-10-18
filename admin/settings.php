@@ -17,7 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                         
+
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
                     </a>
 
@@ -124,17 +124,32 @@
                                         <?php 
                                     $setting = getAllSettings();
                                     if($res = mysqli_fetch_assoc($setting)){ ?>
-                                        <div class="col-md-2">
-                                            <h6>Shop Status : </h6>
+
+                                        <div class="row">
+                                            <div class="col-md-2 mt-3">
+                                            <h6>Shipping Fee : </h6>
+                                            </div>
+                                            <div class="col-md-2 mt-3">
+                                                <input type="text" onchange='settingsUpdate(this, "shpping_fee")'
+                                                    value="<?php echo $res['shpping_fee']; ?>" class="form-control"
+                                                    name="shpping_fee" id="shpping_fee"
+                                                    placeholder="Shipping Fee" required>
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input"
-                                                        id="cart_button  <?php echo $cat_id; ?>" name="cart_button"
-                                                        value="<?php if ($res['shop_status']== 1){ echo "0";}else{ echo "1";} ?>"
-                                                        onchange='settingsUpdate(this, "shop_status")' type="checkbox"
-                                                        <?php if ($res['shop_status']== 0) echo "checked"; ?>>
+                                        <div class="row mt-3">
+                                            <div class="col-md-2">
+                                                <h6>Shop Status : </h6>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input"
+                                                            id="cart_button  <?php echo $cat_id; ?>" name="cart_button"
+                                                            value="<?php if ($res['shop_status']== 1){ echo "0";}else{ echo "1";} ?>"
+                                                            onchange='settingsUpdate(this, "shop_status")'
+                                                            type="checkbox"
+                                                            <?php if ($res['shop_status']== 0) echo "checked"; ?>>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +216,8 @@
 
 
                                                     <div class="col-md-12 mt-5">
-                                                        <label for="banner_01_title" class="form-label">Banner 01 Title</label>
+                                                        <label for="banner_01_title" class="form-label">Banner 01
+                                                            Title</label>
                                                         <textarea onchange='settingsUpdate(this, "banner_01_title")'
                                                             class="form-control" id="banner_01_title" required
                                                             rows="3"><?php echo $res['banner_01_title']; ?></textarea>
@@ -218,7 +234,8 @@
                                                         <div class="mb-3">
                                                             <input type="hidden" name="field" id="field"
                                                                 value="banner_01">
-                                                            <label for="formFile" class="form-label">Banner 01</label>
+                                                            <label for="formFile" class="form-label">Banner
+                                                                01</label>
                                                             <input class="form-control"
                                                                 onchange="uploadSettingImage(this.form);" name="file"
                                                                 type="file" id="formFile">
@@ -228,7 +245,8 @@
                                                     <img class="mt-2" width="200px" src='<?php echo $imgs1_src; ?>'>
 
                                                     <div class="col-md-12 mt-5">
-                                                        <label for="banner_02_title" class="form-label">Banner 02 Title</label>
+                                                        <label for="banner_02_title" class="form-label">Banner 02
+                                                            Title</label>
                                                         <textarea onchange='settingsUpdate(this, "banner_02_title")'
                                                             class="form-control" id="banner_02_title" required
                                                             rows="3"><?php echo $res['banner_02_title']; ?></textarea>
@@ -246,7 +264,8 @@
                                                         <div class="mb-3">
                                                             <input type="hidden" name="field" id="field"
                                                                 value="banner_02">
-                                                            <label for="formFile" class="form-label">Banner 02</label>
+                                                            <label for="formFile" class="form-label">Banner
+                                                                02</label>
                                                             <input class="form-control"
                                                                 onchange="uploadSettingImage(this.form);" name="file"
                                                                 type="file" id="formFile">
@@ -256,9 +275,9 @@
                                                     <img class="mt-2" width="200px" src='<?php echo $imgs2_src; ?>'>
                                                     <?php } ?>
 
-                       
 
-                                         
+
+
                                                     <h6 style="margin-top: 100px;">CONTACT SETTINGS</h6>
                                                     <hr>
                                                     <?php
@@ -334,22 +353,22 @@
 
 
 
+                                                </div>
+
                                             </div>
 
+
                                         </div>
-
-
                                     </div>
+
                                 </div>
 
                             </div>
 
                         </div>
+                        <!-- / Content -->
 
-                    </div>
-                    <!-- / Content -->
-
-                    <?php include 'template/footer.php'; ?>
+                        <?php include 'template/footer.php'; ?>
 </body>
 
 </html>
