@@ -103,12 +103,28 @@ function getAllItemsByParentCategory($cat_id)
 	return mysqli_query($con, $viewcat);
 }
 
+function getAllItemsByCategory($cat_id)
+{
+	include 'connection.php';
+
+	$viewcat = "SELECT * FROM products WHERE cat_id = '$cat_id'";
+	return mysqli_query($con, $viewcat);
+}
+
 
 function getAllAvailableItems()
 {
 	include 'connection.php';
 
 	$viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND product_active = '1'";
+	return mysqli_query($con, $viewcat);
+}
+
+function getItemsCondition($id, $field)
+{
+	include 'connection.php';
+
+	$viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND product_active = '1' AND $field = '$id'";
 	return mysqli_query($con, $viewcat);
 }
 

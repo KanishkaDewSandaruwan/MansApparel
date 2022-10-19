@@ -139,13 +139,15 @@ function createCustomer($data)
 	
 }
 
-function placeOrders($data){
-    include 'connection.php';
+function checkoutOrder($data){
+	include 'connection.php';
 
     $customer_id = $data['customer_id'];
     $total = $data['total'];
+    $shipping_address = $data['shipping_address'];
+    $billing_address = $data['billing_address'];
     
-	$sql = "INSERT INTO product_orders(customer_id, total, payment, date_updated, is_deleted, order_status) VALUES('$customer_id', '$total', 1 , now(), 0, 1)";
+	$sql = "INSERT INTO product_orders(customer_id, total,shipping_address, billing_address, payment, date_updated, is_deleted, order_status, tracking) VALUES('$customer_id', '$total','$shipping_address','$billing_address', 1 , now(), 0, 1, 'Pending')";
 	$res =  mysqli_query($con, $sql);
 	$result =  mysqli_insert_id($con);
 

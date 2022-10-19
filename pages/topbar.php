@@ -63,7 +63,9 @@ $banner_02_src = "server/uploads/settings/".$banner_02;
         <div class="col-lg-3 col-6 text-right">
             <a href="cart.php" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
+                <?php if(isset($_SESSION['customer'])) : ?>
+                <span class="badge"><?php echo dataCountwithCondition("cart" , "WHERE customer_id = '".$_SESSION['customer']."'") ?></span>
+                <?php endif; ?>
             </a>
         </div>
     </div>

@@ -86,18 +86,22 @@ addtoCartProduct = (pid, price) => {
     });
 }
 
+checkSelection = (id, field) => {
+    window.location.href = "shop.php?id=" + id + "&field=" + field;
+}
+
 qtryChange = (cart_id, field, action, currentQty) => {
 
     let val = 0;
 
-    if(action == 1){
+    if (action == 1) {
         var currentQtyint = parseInt(currentQty);
         let sum = currentQtyint + 1;
-         val = sum.toString();
-    }else{
+        val = sum.toString();
+    } else {
         var currentQtyint = parseInt(currentQty);
         let sum = currentQtyint - 1;
-         val = sum.toString();
+        val = sum.toString();
     }
 
 
@@ -122,48 +126,40 @@ qtryChange = (cart_id, field, action, currentQty) => {
 
 }
 
-checkOut = (form)  => {
+checkOut = (form) => {
     var formData = new FormData(form);
 
-    if (formData.get('holder_name').trim() != '') {
-        if (formData.get('card_num').trim() != '') {
-            if (formData.get('expire').trim() != '') {
-            if (formData.get('cvv').trim() != '') {
 
-                    if (formData.get('shipping_address').trim() != '') {
-                        if (formData.get('billing_address').trim() != '') {
+    if (formData.get('shipping_address').trim() != '') {
+        if (formData.get('billing_address').trim() != '') {
 
-                            if (formData.get('total') > 0) {
+            if (formData.get('total') > 0) {
 
-                                var data = {
-                                    customer_id: formData.get('customer_id'),
-                                    shipping_address: formData.get('shipping_address'),
-                                    billing_address: formData.get('billing_address'),
-                                    total: formData.get('total'),
-                                }
+                var data = {
+                    customer_id: formData.get('customer_id'),
+                    shipping_address: formData.get('shipping_address'),
+                    billing_address: formData.get('billing_address'),
+                    total: formData.get('total'),
+                }
 
-                                $.ajax({
-                                    method: "POST",
-                                    url: HOME_API_PATH + "checkoutOrder",
-                                    data: data,
-                                    success: function ($data) {
-                                        console.log($data);
-                                        successToastRedirect("orders.php");
-                                    },
-                                    error: function (error) {
-                                        console.log(`Error ${error}`);
-                                    }
-                                });
+                $.ajax({
+                    method: "POST",
+                    url: HOME_API_PATH + "checkoutOrder",
+                    data: data,
+                    success: function ($data) {
+                        console.log($data);
+                        successToastRedirect("orders.php");
+                    },
+                    error: function (error) {
+                        console.log(`Error ${error}`);
+                    }
+                });
 
-                            } else { errorMessage("Please Select adleast one Item to Buy!"); }
+            } else { errorMessage("Please Select adleast one Item to Buy!"); }
 
-                        } else { errorMessage("Please Enter Billing Address"); }
-                    } else { errorMessage("Please Enter Shipping Address"); }
-  
-            } else { errorMessage("Please Enter CVV Number"); }
-            } else { errorMessage("Please Enter Expire Details"); }
-        } else { errorMessage("Please Enter Card Number"); }
-    } else { errorMessage("Please Enter Holder Name"); }
+        } else { errorMessage("Please Enter Billing Address"); }
+    } else { errorMessage("Please Enter Shipping Address"); }
+
 
 }
 
@@ -190,7 +186,7 @@ placeOrder = (customer_id, total) => {
                 console.log(`Error ${error}`);
             }
         });
-    }else { errorMessage("Please Add item to cart!"); }
+    } else { errorMessage("Please Add item to cart!"); }
 
 }
 

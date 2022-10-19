@@ -62,9 +62,9 @@
                     <form>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all">All Color</label>
-                            <span class="badge border font-weight-normal"><?php echo dataCount("products") ?></span>
+                            <input type="checkbox" onchange="window.location.href='shop.php'" id="color-all" class="custom-control-input" <?php if(!isset($_REQUEST['id']) || $_REQUEST['field'] != 'color_id'){ echo "checked";} ?> >
+                            <label class="custom-control-label" for="color-all">All Color</label>
+                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE is_deleted = '0' AND product_active = '1'") ?></span>
                         </div>
                         <?php 
                             $getall = getAllColor();
@@ -73,9 +73,9 @@
                                 $color_id = $row['color_id'];;?>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" onchange="checkColor(<?php echo $color_id; ?>)" class="custom-control-input" id="color-all">
-                            <label class="custom-control-label" for="price-all"><?php echo $row['color_name']; ?></label>
-                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE color_id = '".$color_id."'") ?></span>
+                            <input type="checkbox" <?php if(isset($_REQUEST['id']) && $_REQUEST['id'] == $color_id && $_REQUEST['field'] == 'color_id'){ echo "checked";} ?>  onchange="checkSelection(<?php echo $row['color_id']; ?>, 'color_id')" id="color_id<?php echo $row['color_id']; ?>"  class="custom-control-input">
+                            <label class="custom-control-label" for="color_id<?php echo $row['color_id']; ?>"><?php echo $row['color_name']; ?></label>
+                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE is_deleted = '0' AND product_active = '1' AND color_id = '".$color_id."'") ?></span>
                         </div>
 
                         <?php } ?>
@@ -90,9 +90,9 @@
                     <form>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="size-all">
+                            <input type="checkbox" class="custom-control-input" onchange="window.location.href='shop.php'" <?php if(!isset($_REQUEST['id']) || $_REQUEST['field'] != 'size_id'){ echo "checked";} ?> id="size-all">
                             <label class="custom-control-label" for="size-all">All Size</label>
-                            <span class="badge border font-weight-normal"><?php echo dataCount("products") ?></span>
+                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE is_deleted = '0' AND product_active = '1'") ?></span>
                         </div>
                         <?php 
                             $getall = getAllsize();
@@ -102,9 +102,9 @@
 
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-1">
-                            <label class="custom-control-label" for="size-1"><?php echo $row['size_name']; ?></label>
-                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE size_id = '".$size_id."'") ?></span>
+                            <input type="checkbox" <?php if(isset($_REQUEST['id']) && $_REQUEST['id'] == $size_id && $_REQUEST['field'] == 'size_id'){ echo "checked";} ?> class="custom-control-input"  onchange="checkSelection(<?php echo $row['size_id']; ?>, 'size_id')" id="size_id<?php echo $row['size_id']; ?>">
+                            <label class="custom-control-label" for="size_id<?php echo $row['size_id']; ?>"><?php echo $row['size_name']; ?></label>
+                            <span class="badge border font-weight-normal"><?php echo dataCountwithCondition("products" , "WHERE is_deleted = '0' AND product_active = '1' AND size_id = '".$size_id."'") ?></span>
                         </div>
                         <?php } ?>
 
@@ -119,35 +119,21 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="dropdown ml-4">
-                                <button class="btn border dropdown-toggle" type="button" id="triggerId"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sort by
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Latest</a>
-                                    <a class="dropdown-item" href="#">Popularity</a>
-                                    <a class="dropdown-item" href="#">Best Rating</a>
-                                </div>
-                            </div>
-                        </div>
+              
                     </div>
 
                     <?php
+                    if(isset($_REQUEST['id']) && isset($_REQUEST['field'])){
+                        $getallCp2 = getItemsCondition($_REQUEST['id'], $_REQUEST['field']);
+                    }else if(isset($_REQUEST['cat_id']) && $_REQUEST['cat_id'] != ""){
+                        $getallCp2 = getAllItemsByCategory($_REQUEST['cat_id']);
+                    }else{
                         $getallCp2 = getAllAvailableItems();
+                    }
 
-                        while ($row3 = mysqli_fetch_assoc($getallCp2)) {
+                    while ($row3 = mysqli_fetch_assoc($getallCp2)) {
+                     
+                            
                             $pid = $row3['pid'];
                             $img = $row3['product_image'];
                             $img_src = "server/uploads/products/" . $img; ?>

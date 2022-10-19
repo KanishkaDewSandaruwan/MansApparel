@@ -159,5 +159,7 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImage
         insertImagetoGallery($img);
     }
 
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'checkoutOrder') {
+    checkoutOrder($_POST);
 }
 ?>
