@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2022 at 07:27 PM
+-- Generation Time: Oct 21, 2022 at 07:38 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,9 +41,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `pid`, `customer_id`, `price`, `qty`, `date_updated`) VALUES
-(73, 17, 1, 450, 1, '2022-10-02 16:51:17'),
-(85, 3, 3, 550, 1, '2022-10-02 23:13:03'),
-(86, 3, 3, 550, 1, '2022-10-02 23:41:24');
+(73, 17, 1, 450, 1, '2022-10-02 16:51:17');
 
 -- --------------------------------------------------------
 
@@ -74,10 +72,10 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_image`, `is_deleted`, `date_u
 (6, '', 'bottles-famous-global-beer-brands-poznan-pol-mar-including-heineken-becks-bud-miller-corona-stella-artois-san-miguel-143170440.jpg', 1, '2022-10-01 10:17:33', 0, 0),
 (7, 'Shirts', 'Basin Mixer.jpg', 0, '2022-10-01 10:18:50', 0, 0),
 (8, 'Trouser', 'bottles-famous-global-beer-brands-poznan-pol-mar-including-heineken-becks-bud-miller-corona-stella-artois-san-miguel-143170440.jpg', 0, '2022-10-01 10:20:19', 0, 1),
-(9, 'Burger', 'download.jfif', 0, '2022-10-01 14:49:14', 9, 0),
+(9, 'Burger', 'download.jfif', 1, '2022-10-01 14:49:14', 9, 0),
 (10, 'Burger', 'download.jfif', 1, '2022-10-01 14:49:15', 7, 0),
 (11, 'Burger', 'fast-food.jpg', 1, '2022-10-01 14:49:40', 7, 0),
-(12, 'Tacos', 'aussie-style-beef-and-salad-tacos-86525-1.jpeg', 0, '2022-10-01 15:35:24', 7, 0),
+(12, 'linen Shirt', 'aussie-style-beef-and-salad-tacos-86525-1.jpeg', 0, '2022-10-01 15:35:24', 7, 0),
 (13, 'Dew', 'dsd.PNG', 1, '2022-10-01 22:24:45', 0, 0),
 (14, 'Dews', 'dsd.PNG', 1, '2022-10-01 22:26:14', 0, 0),
 (15, 'Main', 'download.jfif', 1, '2022-10-02 13:43:02', 0, 0),
@@ -89,7 +87,9 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_image`, `is_deleted`, `date_u
 (21, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:29', 8, 0),
 (22, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:48', 8, 0),
 (23, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:55', 8, 0),
-(24, 'Dew', 'Basin Mixer.jpg', 0, '2022-10-16 17:02:54', 9, 0);
+(24, 'Dew', 'Basin Mixer.jpg', 0, '2022-10-16 17:02:54', 8, 0),
+(25, 'Shoes', 'cat-6.jpg', 0, '2022-10-21 11:33:45', 7, 0),
+(26, 'Deck Shoues', 'cat-6.jpg', 1, '2022-10-21 11:34:31', 26, 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +135,9 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`contact_id`, `name`, `email`, `subject`, `message`, `date_updated`) VALUES
 (4, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', '0713664071', 'sas', '2022-09-12 22:35:23'),
-(5, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', '0713664071', 'dsds', '2022-09-15 10:28:09');
+(5, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', '0713664071', 'dsds', '2022-09-15 10:28:09'),
+(15, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', 'asa', 'sasa', '2022-10-17 22:50:59'),
+(16, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', 'Kaniya', 'sasa', '2022-10-21 14:21:44');
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,30 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`customer_id`, `name`, `email`, `phone`, `nic`, `address`, `gender`, `password`, `is_deleted`) VALUES
 (1, '', 'admin', '', '', '', 0, '123456', 0),
 (2, 'Thilini Maheshika', 'thili@gmail.com', '0713664071', '962670426G', 'Banwalgodalla, Kosmulla', 2, '123456', 1),
-(3, 'Kanishka Dew Sandaruwan', 'kanishkadewsandaruwan@gmail.com', '0713664071', '962670426G', 'Banwalgodalla, Kosmulla', 1, '123456', 0);
+(3, 'Kanishka Sandaruwan', 'kanishkadewsandaruwan@gmail.com', '0713664071', '962670426G', 'Banwalgodalla, Kosmulla', 1, '123456', 0),
+(4, 'Kanishka Dew Sandaruwan', 'Kanishkadewsandaruwan@gmail.com', '0713664071', '962670426G', 'Banwalgodalla, Kosmulla', 1, '123456', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `gallery_id` int(11) NOT NULL,
+  `gallery_image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`gallery_id`, `gallery_image`) VALUES
+(20, 'carousel-1.jpg'),
+(21, 'carousel-2.jpg'),
+(22, 'cat-4.jpg'),
+(23, 'carousel-2.jpg'),
+(24, 'carousel-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -185,7 +210,14 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`item_id`, `order_id`, `pid`, `order_qty`, `price`) VALUES
 (33, 31, 3, 1, 550),
 (34, 31, 17, 1, 450),
-(35, 33, 17, 1, 450);
+(35, 33, 17, 1, 450),
+(36, 34, 3, 3, 550),
+(37, 34, 16, 289, 450),
+(38, 34, 16, 1, 450),
+(39, 34, 22, 1, 445),
+(40, 35, 16, 2, 450),
+(41, 35, 16, 1, 450),
+(42, 35, 25, 1, 445);
 
 -- --------------------------------------------------------
 
@@ -196,7 +228,7 @@ INSERT INTO `order_items` (`item_id`, `order_id`, `pid`, `order_qty`, `price`) V
 CREATE TABLE `products` (
   `pid` int(11) NOT NULL,
   `product_name` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `product_description` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `product_description` varchar(9999) CHARACTER SET utf8mb4 NOT NULL,
   `product_highlight` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `product_price` int(255) NOT NULL,
   `product_qty` int(255) NOT NULL,
@@ -206,31 +238,56 @@ CREATE TABLE `products` (
   `product_image` varchar(255) NOT NULL,
   `cat_id` int(255) NOT NULL,
   `size_id` int(255) NOT NULL,
-  `color_id` int(255) NOT NULL
+  `color_id` int(255) NOT NULL,
+  `size_chart` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pid`, `product_name`, `product_description`, `product_highlight`, `product_price`, `product_qty`, `product_active`, `date_updated`, `is_deleted`, `product_image`, `cat_id`, `size_id`, `color_id`) VALUES
-(1, 'Arract', 'we are selling ml you can buy ml wise', '35.8 alcohol', 250, 1700, 1, '2022-10-03 00:47:49', 1, 'images.jfif', 20, 0, 0),
-(3, 'Chicken Burger', 'World best bag', 'Best Bag', 55, 18, 1, '2022-10-02 20:16:38', 0, 'fast-food.jpg', 9, 1, 1),
-(9, 'Tops', 'ss', 's', 4500, 5, 0, '2022-09-11 12:09:22', 1, 'images.jfif', 1, 0, 0),
-(10, 'Office Slipers', 'ss', 'ss', 2500, 50, 0, '2022-09-11 12:11:27', 1, 'download.jfif', 3, 0, 0),
-(11, 'Office Casual', 'sss', 'best slipers', 4500, 5, 0, '2022-09-11 12:07:26', 1, 'download.jfif', 3, 0, 0),
-(12, 'Speeker', 'ss', 'ss', 250, 50, 0, '2022-09-11 12:11:47', 1, 'direct.PNG', 1, 0, 0),
-(13, 'Office Slipers Profecional', 'a', 'ss', 6500, 5, 0, '2022-09-11 12:06:55', 1, 'download.jfif', 3, 0, 0),
-(14, 'Bata Waves', 'ss', 'ss', 8500, 5, 0, '2022-09-11 11:52:42', 1, 'images.jfif', 1, 0, 0),
-(16, 'Taco', 'best Taco', 'ss', 450, 0, 1, '2022-10-02 20:14:54', 0, 'download (1).jfif', 12, 3, 3),
-(17, 'Burger', 'big burger', 'sasas', 450, 2, 1, '2022-10-02 20:21:12', 0, 'download.jfif', 9, 3, 3),
-(18, 'Dew1', 'sasas', 'sasa', 450, 5, 1, '2022-10-01 22:25:14', 1, 'dsd.PNG', 14, 0, 0),
-(19, 'sasa', 'sasa', 'sas', 456, 5, 1, '2022-10-01 22:26:38', 1, 'dsd.PNG', 14, 0, 0),
-(20, 'sasahhh', 'sasa', 'sasa', 545, 45, 1, '2022-10-01 22:29:10', 1, 'dsd.PNG', 14, 0, 0),
-(21, 'gfgfg', 'dsdsd', 'dsdsd', 778, 888, 1, '2022-10-01 22:33:08', 1, 'dsd.PNG', 14, 0, 0),
-(22, 'asa', 'sas', 'ss', 445, 5, 1, '2022-10-02 13:49:16', 0, 'Basin Mixer.jpg', 12, 1, 3),
-(23, 'Corton Tshire', 'asa', 'sas', 650, 5, 1, '2022-10-16 22:01:09', 0, 'Basin Mixer.jpg', 9, 0, 0),
-(24, 'sssss', 'ss', 'ss', 450, 5, 0, '2022-10-16 22:01:50', 1, 'Kitchens Accessories.jpg', 9, 0, 0);
+INSERT INTO `products` (`pid`, `product_name`, `product_description`, `product_highlight`, `product_price`, `product_qty`, `product_active`, `date_updated`, `is_deleted`, `product_image`, `cat_id`, `size_id`, `color_id`, `size_chart`) VALUES
+(1, 'Arract', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', '35.8 alcohol', 250, 1700, 1, '2022-10-03 00:47:49', 1, 'images.jfif', 20, 0, 0, ''),
+(3, 'Chicken Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'Best Bag', 55, 15, 1, '2022-10-19 23:48:51', 1, 'fast-food.jpg', 9, 1, 1, ''),
+(9, 'Tops', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 's', 4500, 5, 0, '2022-09-11 12:09:22', 1, 'images.jfif', 1, 0, 0, ''),
+(10, 'Office Slipers', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 2500, 50, 0, '2022-09-11 12:11:27', 1, 'download.jfif', 3, 0, 0, ''),
+(11, 'Office Casual', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'best slipers', 4500, 5, 0, '2022-09-11 12:07:26', 1, 'download.jfif', 3, 0, 0, ''),
+(12, 'Speeker', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 250, 50, 0, '2022-09-11 12:11:47', 1, 'direct.PNG', 1, 0, 0, ''),
+(13, 'Office Slipers Profecional', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 6500, 5, 0, '2022-09-11 12:06:55', 1, 'download.jfif', 3, 0, 0, ''),
+(14, 'Bata Waves', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 8500, 5, 0, '2022-09-11 11:52:42', 1, 'images.jfif', 1, 0, 0, ''),
+(16, 'Sport T Shirt', 'uygugyuguuuhbhub', 'Premium Scoop T-Shirt Premium tee, scoop neck, regular fit', 450, 7, 1, '2022-10-21 18:01:49', 0, 'WhatsApp Image 2022-10-21 at 12.14.09.jpg', 12, 5, 3, ''),
+(17, 'Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasas', 450, 2, 1, '2022-10-02 20:21:12', 1, 'download.jfif', 9, 3, 3, ''),
+(18, 'Dew1', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 450, 5, 1, '2022-10-01 22:25:14', 1, 'dsd.PNG', 14, 0, 0, ''),
+(19, 'sasa', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 456, 5, 1, '2022-10-01 22:26:38', 1, 'dsd.PNG', 14, 0, 0, ''),
+(20, 'sasahhh', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 545, 45, 1, '2022-10-01 22:29:10', 1, 'dsd.PNG', 14, 0, 0, ''),
+(21, 'gfgfg', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'dsdsd', 778, 888, 1, '2022-10-01 22:33:08', 1, 'dsd.PNG', 14, 0, 0, ''),
+(22, 'asa', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 445, 4, 1, '2022-10-19 23:48:51', 0, 'product-7.jpg', 24, 5, 1, ''),
+(23, 'Corton Tshire', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 650, 5, 1, '2022-10-16 22:01:09', 1, 'Basin Mixer.jpg', 9, 0, 0, ''),
+(24, 'sssss', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 450, 5, 0, '2022-10-16 22:01:50', 1, 'Kitchens Accessories.jpg', 9, 0, 0, ''),
+(25, 'Linen Shirt', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'asas', 4562, 5, 1, '2022-10-21 18:01:49', 0, 'Kitchens Accessories.jpg', 12, 0, 0, ''),
+(26, 'sa', 'sa', 'sa', 4454, 5, 1, '2022-10-21 21:39:19', 0, 'offer-2.png', 12, 0, 0, ''),
+(27, 'sas', 'sa', 'sa', 45, 45, 1, '2022-10-21 21:39:46', 0, 'offer-1.png', 24, 0, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_image_gallery`
+--
+
+CREATE TABLE `product_image_gallery` (
+  `img_id` int(11) NOT NULL,
+  `products_image` varchar(255) NOT NULL,
+  `pid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_image_gallery`
+--
+
+INSERT INTO `product_image_gallery` (`img_id`, `products_image`, `pid`) VALUES
+(1, 'WhatsApp Image 2022-10-21 at 12.14.09.jpg', 16),
+(3, 'offer-2.png', 16),
+(4, 'product-7.jpg', 16);
 
 -- --------------------------------------------------------
 
@@ -257,7 +314,32 @@ CREATE TABLE `product_orders` (
 
 INSERT INTO `product_orders` (`order_id`, `customer_id`, `total`, `shipping_address`, `billing_address`, `payment`, `date_updated`, `is_deleted`, `order_status`, `tracking`) VALUES
 (31, 3, 1000, '', '', 1, '2022-10-02 20:16:38', 0, 3, '07:02'),
-(33, 3, 450, '', '', 1, '2022-09-14 20:21:12', 0, 2, '17:00');
+(33, 3, 450, '', '', 1, '2022-09-14 20:21:12', 0, 2, '17:00'),
+(34, 3, 133095, 'Galle', 'Neluwa', 1, '2022-10-19 23:48:51', 0, 3, 'Pending'),
+(35, 3, 2295, 'asa', 'sasa', 1, '2022-10-21 18:01:49', 0, 1, 'Pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `review_id` int(11) NOT NULL,
+  `review_review` varchar(255) NOT NULL,
+  `review_name` varchar(255) NOT NULL,
+  `review_email` varchar(255) NOT NULL,
+  `review_pid` int(11) NOT NULL,
+  `date_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `review_review`, `review_name`, `review_email`, `review_pid`, `date_updated`) VALUES
+(2, 'sasa', 'Kanisha', 'kanishkadewsandaruwan@gmail.com', 16, '2022-10-21 16:19:15'),
+(3, 'asasas', 'Sandaruwan', 'asa@gmail.com', 16, '2022-10-21 16:31:48');
 
 -- --------------------------------------------------------
 
@@ -274,25 +356,25 @@ CREATE TABLE `settings` (
   `company_phone` varchar(255) CHARACTER SET utf8 NOT NULL,
   `company_email` varchar(255) NOT NULL,
   `company_address` varchar(255) NOT NULL,
-  `sub_image` varchar(255) NOT NULL,
+  `shop_status` varchar(2) NOT NULL,
   `about_image` varchar(255) NOT NULL,
   `link_facebook` varchar(255) NOT NULL,
-  `link_twiiter` varchar(255) NOT NULL,
-  `link_instragram` varchar(255) NOT NULL,
-  `header_rotate_image` varchar(255) NOT NULL,
-  `about_experience` int(255) NOT NULL,
-  `opening` varchar(255) CHARACTER SET cp1250 NOT NULL,
-  `shop_status` int(2) NOT NULL,
-  `privacy_policy` varchar(9999) NOT NULL,
-  `terms_and_condition` varchar(9999) NOT NULL
+  `link_whatsapp` varchar(255) NOT NULL,
+  `banner_01` varchar(255) NOT NULL,
+  `banner_02` varchar(255) NOT NULL,
+  `banner_01_title` varchar(255) CHARACTER SET cp1250 NOT NULL,
+  `banner_02_title` varchar(255) NOT NULL,
+  `banner_01_desc` varchar(255) NOT NULL,
+  `banner_02_desc` varchar(255) NOT NULL,
+  `shpping_fee` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`header_image`, `header_title`, `header_desc`, `about_title`, `about_desc`, `company_phone`, `company_email`, `company_address`, `sub_image`, `about_image`, `link_facebook`, `link_twiiter`, `link_instragram`, `header_rotate_image`, `about_experience`, `opening`, `shop_status`, `privacy_policy`, `terms_and_condition`) VALUES
-('Spouts.jpg', 'Welcome to Senving Restaurent', 'With this shop hompeage template', 'About Us', 'Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!', '0713664076', 'asn@gmail.com', 'Banwalgodalla, Kosmulla', 'mcdonaldsglobal.jpg', 'na-beers-counter-ebe988ba9d8751cbcbb6cd49476ba405673d252c-s1100-c50.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://www.facebook.com/', 'hero.png', 20, 'Monday - Saturday 09AM - 09PM  Sunday 10AM - 08PM', 1, '<h1>What Is a Terms and Conditions Agreement?</h1></br>\n<p>A terms and conditions agreement outlines the website administratorâ€™s rules regarding user behavior and provides information about the actions the website administrator can and will perform.</p>\n\nEssentially, your terms and conditions text is a contract between your website and its users. In the event of a legal dispute, arbitrators will look at it to determine whether each party acted within their rights.\n\nCreating the best terms and conditions page possible will protect your business from the following:\n\nAbusive users: Terms and Conditions agreements allow you to establish what constitutes appropriate activity on your site or app, empowering you to remove abusive users and content that violates your guidelines.\nIntellectual property theft: Asserting your claim to the creative assets of your site in your terms and conditions will prevent ownership disputes and copyright infringement.\nPotential litigation: If a user lodges a legal complaint against your business, showing that they were presented with clear terms and conditions before they used your site will help you immensely in court.\nIn short, terms and conditions give you control over your site and legal enforcement if users try to take advantage of your operations.', 'sasasa');
+INSERT INTO `settings` (`header_image`, `header_title`, `header_desc`, `about_title`, `about_desc`, `company_phone`, `company_email`, `company_address`, `shop_status`, `about_image`, `link_facebook`, `link_whatsapp`, `banner_01`, `banner_02`, `banner_01_title`, `banner_02_title`, `banner_01_desc`, `banner_02_desc`, `shpping_fee`) VALUES
+('carousel-1.jpg', 'Welcome to Senving Restaurent', 'With this shop hompeage template', 'We are best', 'Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!', '0713664076', 'asn@gmail.com', 'Banwalgodalla, Kosmulla', '0', 'na-beers-counter-ebe988ba9d8751cbcbb6cd49476ba405673d252c-s1100-c50.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'cat-5.jpg', 'Kitchen Mixers.jpg', 'Spring Collection', 'Winter Collection', '20% OFF THE ALL ORDER', '20% OFF THE ALL ORDER', 500);
 
 -- --------------------------------------------------------
 
@@ -316,7 +398,8 @@ INSERT INTO `size` (`size_id`, `size_name`, `size_description`, `is_deleted`, `d
 (1, 'M', '256 X 45', 0, '2022-10-16 21:32:01'),
 (2, 'S', '256 X 45', 1, '2022-10-16 21:32:12'),
 (3, 'L', '256', 0, '2022-10-16 21:47:21'),
-(4, 'L', '256', 1, '2022-10-16 21:47:21');
+(4, 'L', '256', 1, '2022-10-16 21:47:21'),
+(5, 'S', 'dssds', 0, '2022-10-21 13:25:15');
 
 --
 -- Indexes for dumped tables
@@ -353,6 +436,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`gallery_id`);
+
+--
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
@@ -365,10 +454,22 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`pid`);
 
 --
+-- Indexes for table `product_image_gallery`
+--
+ALTER TABLE `product_image_gallery`
+  ADD PRIMARY KEY (`img_id`);
+
+--
 -- Indexes for table `product_orders`
 --
 ALTER TABLE `product_orders`
   ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`review_id`);
 
 --
 -- Indexes for table `size`
@@ -384,13 +485,13 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `colors`
@@ -402,37 +503,55 @@ ALTER TABLE `colors`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `product_image_gallery`
+--
+ALTER TABLE `product_image_gallery`
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_orders`
 --
 ALTER TABLE `product_orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `size`
 --
 ALTER TABLE `size`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
