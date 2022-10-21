@@ -125,17 +125,14 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>Product Name</th>
-                                        <th>Description</th>
+                                        <th></th>
                                         <th>Image</th>
-                                        <th>Highlight</th>
                                         <th>Size</th>
                                         <th>Color</th>
                                         <th>Category</th>
                                         <th>Price (Rs.)</th>
                                         <th>Qty</th>
                                         <th>Available</th>
-                                        <th>Date Updated</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -147,15 +144,28 @@
                                     $img_src = "../server/uploads/products/" . $img; ?>
                                     <tr>
                                         <td>
-                                            <?php echo $row['product_name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['product_description']; ?>
+                                            <div class="col-md-12">
+                                            <div class="row">
+                                                <h6 class="fw-bold text-dark mt-2">Product Name</h6>
+                                                <p><?php echo $row['product_name']; ?></p>
+                                            </div>
+                                            <div class="row">
+                                                <h6 class="fw-bold text-dark mt-2">Product Description</h6>
+                                                <p><?php echo $row['product_description']; ?></p>
+                                            </div>
+                                            <div class="row">
+                                                <h6 class="fw-bold text-dark mt-2">Product Highlight</h6>
+                                               <p> <?php echo $row['product_highlight']; ?></p>
+                                            </div>
+                                            <div class="row">
+                                                <h6 class="fw-bold text-dark mt-2">Updated Date</h6>
+                                               <p> <?php echo $row['date_updated']; ?></p>
+                                            </div>
+                                    
+                                            </div>
+
                                         </td>
                                         <td><img width="50px" src='<?php echo $img_src; ?>'></td>
-                                        <td>
-                                            <?php echo $row['product_highlight']; ?>
-                                        </td>
 
                                         <td>
                                             <select
@@ -232,9 +242,7 @@
                                                 </option>
                                             </select>
                                         </td>
-                                        <td>
-                                            <?php echo $row['date_updated']; ?>
-                                        </td>
+
                                         <td>
 
                                             <a href="prodcuts_edit.php?pid=<?php echo $row['pid']; ?>"

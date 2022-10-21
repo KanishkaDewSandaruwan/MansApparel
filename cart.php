@@ -48,7 +48,7 @@
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3" style="color: white;">Our Cart</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a style="color: white;" href="">Home</a></p>
+                <p class="m-0"><a style="color: white;" href="index.php">Home</a></p>
                 <p class="m-0 px-2" style="color: white;">-</p>
                 <p class="m-0" style="color: white;">Cart</p>
             </div>
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">Rs. <?php echo $total; ?></td>
+                            <td class="align-middle">Rs. <?php echo $total; ?>.00</td>
                             <td class="align-middle"><button
                                     onclick="cartDelete(<?php echo $row['cart_id']; ?>, 'cart', 'cart_id')"
                                     type="button" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
@@ -138,21 +138,21 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">Rs. <?php echo $total; ?></h6>
+                            <h6 class="font-weight-medium">Rs. <?php echo $total; ?>.00</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">Rs. <?php echo $res['shpping_fee']; ?></h6>
+                            <h6 class="font-weight-medium">Rs. <?php echo $res['shpping_fee']; ?>.00</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">Rs. <?php echo $final_amount; ?></h5>
+                            <h5 class="font-weight-bold">Rs. <?php echo $final_amount; ?>.00</h5>
                         </div>
                         <a href="checkout.php?total=<?php echo $final_amount; ?>"
                             class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout Rs.
-                            <?php echo $final_amount; ?></a>
+                            <?php echo $final_amount; ?>.00</a>
                     </div>
                 </div>
             </div>
