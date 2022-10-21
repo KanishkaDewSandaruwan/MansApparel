@@ -28,7 +28,7 @@
 
 <body>
 
-
+<?php include 'pages/auth.php'; ?>
     <?php include 'pages/topbar.php'; ?>
     <?php include 'pages/navbar.php'; ?>
 
