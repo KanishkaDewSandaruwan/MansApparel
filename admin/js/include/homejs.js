@@ -27,6 +27,35 @@ addContactMessage = (form) => {
 
 }
 
+addReview = (form) => {
+    var formData = new FormData(form);
+
+    if (formData.get('review_review').trim() != '') {
+        if (formData.get('review_name').trim() != '') {
+            if (formData.get('review_email').trim() != '') {
+
+                $.ajax({
+                    method: "POST",
+                    url: HOME_API_PATH + "addReview",
+                    data: formData,
+                    success: function ($data) {
+                        console.log($data);
+                        successToast();
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    error: function (error) {
+                        console.log(`Error ${error}`);
+                    }
+                });
+
+            } else { errorMessage("Please Enter Email Address"); }
+        } else { errorMessage("Please Enter Your Name"); }
+    } else { errorMessage("Please Enter review"); }
+
+}
+
 addtoCartProductwithQty = (pid, price) => {
 
     var qty = document.getElementById('qty').value;
@@ -148,7 +177,7 @@ checkOut = (form) => {
                     data: data,
                     success: function ($data) {
                         console.log($data);
-                        successToastRedirect("orders.php");
+                        successToastRedirect("order.php");
                     },
                     error: function (error) {
                         console.log(`Error ${error}`);
@@ -476,8 +505,9 @@ callUpdateRequestFromHome = (data) => {
 }
 
 
-searchNews = (form) => {
+search = (form) => {
+    console.log("clicked");
     var formData = new FormData(form);
-    var keyword = formData.get('keyword');
-    window.location.href = "search.php?keywords=" + keyword;
+    var keyword = formData.get('key');
+    window.location.href = "search.php?key=" + keyword;
 }

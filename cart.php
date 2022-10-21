@@ -35,14 +35,22 @@
 
     <?php include 'pages/navbar.php'; ?>
 
-    <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
+    <style>
+    /*** Hero Header ***/
+    .hero-header {
+        background: linear-gradient(rgba(15, 23, 43, .5), rgba(15, 23, 43, .5)), url(<?php echo $header_src; ?>);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+    <div class="container-fluid mb-5 hero-header">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+            <h1 class="font-weight-semi-bold text-uppercase mb-3" style="color: white;">Our Cart</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Shopping Cart</p>
+                <p class="m-0"><a style="color: white;" href="">Home</a></p>
+                <p class="m-0 px-2" style="color: white;">-</p>
+                <p class="m-0" style="color: white;">Cart</p>
             </div>
         </div>
     </div>

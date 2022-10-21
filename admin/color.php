@@ -17,8 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                         
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: uppercase;">Black & White</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -37,7 +36,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -45,7 +44,7 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div data-i18n="Layouts">Category</div>
@@ -93,7 +92,6 @@
                 </ul>
             </aside>
             <!-- / Menu -->
-
 
             <?php include 'template/navbar.php'; ?>
 

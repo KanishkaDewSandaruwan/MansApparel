@@ -17,8 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                         
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: uppercase;">Black & White</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -37,7 +36,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -70,7 +69,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item ">
+                    <li class="menu-item active">
                         <a href="products.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                             <div data-i18n="Analytics">Products</div>
@@ -116,9 +115,10 @@
                                 <h3 class="mb-4">Products List</h3>
                             </div>
                             <div class="col-lg-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ProductModal"> Add
-                            New</button>
-                    </div>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ProductModal">
+                                    Add
+                                    New</button>
+                            </div>
                         </div>
                         <hr>
                         <div class="table-responsive">
@@ -156,21 +156,21 @@
                                         <td>
                                             <?php echo $row['product_highlight']; ?>
                                         </td>
-                                        
+
                                         <td>
                                             <select
-                                            onchange='updateData(this, "<?php echo $pid; ?>","size_id", "products", "pid")'
-                                            id="size_id <?php echo $pid; ?>" class='form-control norad tx12'
-                                            name="size_id" type='text'>
-                                            <?php 
+                                                onchange='updateData(this, "<?php echo $pid; ?>","size_id", "products", "pid")'
+                                                id="size_id <?php echo $pid; ?>" class='form-control norad tx12'
+                                                name="size_id" type='text'>
+                                                <?php 
                                         $getallCat = getAllsize();
                                         while($row2=mysqli_fetch_assoc($getallCat)){ ?>
 
-                                        <option value="<?php echo $row2['size_id']; ?>"
-                                        <?php if ($row['size_id']== $row2['size_id']) echo "selected"; ?>>
-                                        <?php echo $row2['size_name']; ?></option>
-                                        <?php } ?>
-                                        </select>
+                                                <option value="<?php echo $row2['size_id']; ?>"
+                                                    <?php if ($row['size_id']== $row2['size_id']) echo "selected"; ?>>
+                                                    <?php echo $row2['size_name']; ?></option>
+                                                <?php } ?>
+                                            </select>
 
                                         </td>
                                         <td>
@@ -240,6 +240,12 @@
                                             <a href="prodcuts_edit.php?pid=<?php echo $row['pid']; ?>"
                                                 class="btn btn-darkblue">
                                                 <i class="fa-solid fa-pen-to-square"></i> </a>
+                                            <a href="product_images.php?pid=<?php echo $row['pid']; ?>"
+                                                class="btn btn-darkblue">
+                                                <i class="fas fa-images"></i> </a>
+                                            <a href="reviews.php?pid=<?php echo $row['pid']; ?>"
+                                                class="btn btn-darkblue">
+                                                <i class="fas fa-comments"></i> </a>
                                             <?php if ($row['product_active']=="0"): ?>
                                             <button type="button"
                                                 onclick="deleteData(<?php echo $row['pid']; ?>,'products', 'pid')"
@@ -313,7 +319,8 @@
                         <select class="form-select" name="color_id" id="color_id" aria-label="Default select example">
                             <?php $getall = getAllColor();
                                 while($row=mysqli_fetch_assoc($getall)){ ?>
-                            <option style="background-color: <?php echo $row['color_code']; ?>;" value="<?php echo $row['color_id'] ?>"><?php echo $row['color_name'] ?></option>
+                            <option style="background-color: <?php echo $row['color_code']; ?>;"
+                                value="<?php echo $row['color_id'] ?>"><?php echo $row['color_name'] ?></option>
                             <?php } ?>
 
                         </select>

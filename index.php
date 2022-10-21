@@ -47,7 +47,7 @@
                             $cat_id = $row['cat_id'];
 
                             $getallCp2 = getAllSubCategory($cat_id);
-                            $row2 = mysqli_fetch_assoc($getallCp2);
+                            if( $row2 = mysqli_fetch_assoc($getallCp2)){
 
                             $getallCp3 = getAllItemsByParentCategory($row2['cat_id']);
                             $getallCp2 = getAllSubCategory($cat_id);
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                        <?php } } ?>
+                        <?php } } } ?>
                         <!-- <a href="" class="nav-item nav-link">Shirts</a>
                         <a href="" class="nav-item nav-link">Jeans</a>
                         <a href="" class="nav-item nav-link">Swimwear</a>
@@ -101,14 +101,7 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="shop.php" class="nav-item nav-link">Shop</a>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                        <?php if(isset($_SESSION['customer'])) : ?>
-                        <a href="admin/logout.php" class="nav-item nav-link">Logout</a>
-                        <?php else : ?>
-                            <a href="admin/login.php" class="nav-item nav-link">Login</a>
-                            <a href="admin/register.php" class="nav-item nav-link">Register</a>
-                            <?php endif; ?>
+                            <a href="about.php" class="nav-item nav-link">About Us</a>
                         </div>
                     </div>
                 </nav>
@@ -137,27 +130,27 @@
 
     <!-- Featured Start -->
     <div class="container-fluid pt-5">
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+        <div class="row px-xl-5 pb-3 ">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1 ">
+                <div class="d-flex align-items-center border mb-4 border border-primary " style="padding: 30px;">
                     <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
                     <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1 ">
+                <div class="d-flex align-items-center border mb-4 border border-primary " style="padding: 30px;">
                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
                     <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1 ">
+                <div class="d-flex align-items-center border mb-4 border border-primary " style="padding: 30px;">
                     <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
                     <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1 ">
+                <div class="d-flex align-items-center border mb-4 border border-primary " style="padding: 30px;">
                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
                     <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
                 </div>
@@ -186,7 +179,7 @@
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <p class="text-right"><?php echo $count; ?> Products</p>
                     <a href="shop.php?cat_id=<?php echo $cat_id; ?>" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="<?php echo $img_src; ?>" alt="">
+                        <img class="img-fluid"  src="<?php echo $img_src; ?>" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0"><?php echo $row['cat_name']; ?></h5>
                 </div>
@@ -207,7 +200,7 @@
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3"><?php echo $res['banner_01_desc']; ?></h5>
                         <h1 class="mb-4 font-weight-semi-bold"><?php echo $res['banner_01_title']; ?></h1>
-                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <a href="shop.php" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -217,7 +210,7 @@
                     <div class="position-relative" style="z-index: 1;">
                         <h5 class="text-uppercase text-primary mb-3"><?php echo $res['banner_02_desc']; ?></h5>
                         <h1 class="mb-4 font-weight-semi-bold"><?php echo $res['banner_02_title']; ?></h1>
-                        <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                        <a href="shop.php" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -252,7 +245,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="<?php echo $img_src; ?>" alt="">
+                        <img class="img-fluid w-100" style="width: 300px; height: 400px;" src="<?php echo $img_src; ?>" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>
@@ -291,7 +284,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="<?php echo $img_src; ?>" alt="">
+                        <img class="img-fluid w-100" style="width: 300px; height: 400px;" src="<?php echo $img_src; ?>" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>

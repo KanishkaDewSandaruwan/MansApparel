@@ -17,8 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                         
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: uppercase;">Black & White</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -37,7 +36,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -70,7 +69,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item ">
+                    <li class="menu-item active">
                         <a href="products.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                             <div data-i18n="Analytics">Products</div>
@@ -109,11 +108,11 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="products.php">Customer</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Customer List</li>
+                                        <li class="breadcrumb-item"><a href="products.php">Product Edit</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Product Edit</li>
                                     </ol>
                                 </nav>
-                                <h3 class="mb-4">Customer List</h3>
+                                <h3 class="mb-4">Product Edit</h3>
                             </div>
                         </div>
                         <hr>
@@ -126,9 +125,8 @@
                         $img = $row['product_image'];
                         $img_src = "../server/uploads/products/" . $img;
                             ?>
-                            <form action="" method="post" id="basicform" class="col-md-6" data-parsley-validate=""
-                                enctype="multipart/form-data">
 
+                            <div class="col-md-6">
                                 <div class="form-group mt-3">
                                     <label for="product_name">Product Name</label>
                                     <input id="product_name  <?php echo $pid; ?>" type="text" name="product_name"
@@ -138,15 +136,6 @@
                                         class="form-control">
                                 </div>
 
-                                <div class="form-group mt-3">
-                                    <label for="product_description">Product Description</label>
-                                    <input id="product_description  <?php echo $pid; ?>" type="text"
-                                        name="product_description"
-                                        onchange="updateData(this, '<?php echo $pid; ?>', 'product_description', 'products', 'pid');"
-                                        value="<?php echo $row['product_description']; ?>" data-parsley-trigger="change"
-                                        required="" placeholder="Enter Product Description" autocomplete="off"
-                                        class="form-control">
-                                </div>
                                 <div class="form-group mt-3">
                                     <label for="product_highlight">Product Highlight</label>
                                     <input id="product_highlight <?php echo $pid; ?>" type="text"
@@ -160,16 +149,17 @@
                                 <div class="form-group mt-3">
                                     <select
                                         onchange='updateData(this, "<?php echo $pid; ?>","color_id", "products", "pid")'
-                                        id="color_id <?php echo $pid; ?>" class='form-control norad tx12' name="color_id"
-                                        type='text'>
+                                        id="color_id <?php echo $pid; ?>" class='form-control norad tx12'
+                                        name="color_id" type='text'>
                                         <?php 
                                         $getallCat = getAllColor();
                                         while($row2=mysqli_fetch_assoc($getallCat)){ ?>
 
                                         <option value="<?php echo $row2['color_id']; ?>"
                                             <?php if ($row['color_id']== $row2['color_id']) echo "selected"; ?>>
-                                            <?php echo $row2['color_name']; ?><span class="m-3" style=" height: 25px; width: 25px; background-color: <?php echo $row2['color_code']; ?>; border-radius: 50%; display: inline-block;"></span>
-</option>
+                                            <?php echo $row2['color_name']; ?><span class="m-3"
+                                                style=" height: 25px; width: 25px; background-color: <?php echo $row2['color_code']; ?>; border-radius: 50%; display: inline-block;"></span>
+                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -190,7 +180,7 @@
                                     </select>
                                 </div>
 
-            
+
 
                                 <div class="form-group mt-3">
                                     <label for="product_price">Price</label>
@@ -230,7 +220,8 @@
                                         id="product_active <?php echo $pid; ?>" class='form-control norad tx12'
                                         name="product_active" type='text'>
                                         <option value="1"
-                                            <?php if ($row['product_active'] == "1" ) echo "selected" ; ?>> Active
+                                            <?php if ($row['product_active'] == "1" ) echo "selected" ; ?>>
+                                            Active
                                         </option>
                                         <option value="0"
                                             <?php if ($row['product_active'] == "0" ) echo "selected" ; ?>>
@@ -253,17 +244,46 @@
                                             <input onchange="uploadImageProducts(this.form);" class="form-control"
                                                 name="file" type="file" id="formFile">
                                         </div>
-
-                                        <img width="100px" src='<?php echo $img_src; ?>'>
+                                    </form>
+                                    <img width="100px" src='<?php echo $img_src; ?>'>
                                 </div>
+                            </div>
+                            <div class="form-group mt-5">
+                                <form enctype="multipart/form-data" method="POST">
+                                    <div class="mb-3">
+                                        <textarea id="product_description"
+                                            name="product_description"><?php echo $row['product_description']; ?></textarea>
+                                        <input class="form-control" value="<?php echo $row['pid'] ?>" name="id"
+                                            type="hidden" id="id">
+                                        <button type="button" onclick="changeDescription(this.form)"
+                                            class="btn btn-primary">Update Description</button>
+                                    </div>
+                                </form>
+                                <script>
+                                $('#product_description').summernote({
+                                    placeholder: 'Article Content',
+                                    tabsize: 2,
+                                    height: 120,
+                                    toolbar: [
+                                        ['style', ['style']],
+                                        ['font', ['bold', 'underline', 'clear']],
+                                        ['color', ['color']],
+                                        ['para', ['ul', 'ol', 'paragraph']],
+                                        ['view', ['fullscreen', 'codeview', 'help']]
+                                    ]
+                                });
+                                </script>
 
-                                <div class="form-group mt-3 mt-5">
+                            </div>
 
-                                    <button type="button" class="btn btn-dark mr-5"
-                                        onclick="window.location.href='products.php'">Back</button>
 
-                                </div>
-                            </form>
+                            <div class="form-group mt-3 mt-5">
+
+                                <button type="button" class="btn btn-dark mr-5"
+                                    onclick="window.location.href='products.php'">Back</button>
+
+                            </div>
+
                             <?php } ?>
 
                         </div>
@@ -275,5 +295,7 @@
 
                 <?php include 'template/footer.php'; ?>
 </body>
+
+
 
 </html>

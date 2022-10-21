@@ -17,45 +17,56 @@ $banner_02 = $res['banner_02'];
 $banner_02_src = "server/uploads/settings/".$banner_02;
 
 ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 <div class="container-fluid">
-    <div class="row bg-secondary py-2 px-xl-5">
+    <div class="row text-white py-2 px-xl-5" style="background-color: #69696b;">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center">
-                <a class="text-dark" href="">Profile</a>
+            <?php if(isset($_SESSION['customer'])) : ?>
+                <a class="text-white" href="profile.php">Profile</a>
                 <span class="text-muted px-2">|</span>
-                <a class="text-dark" href="">Orders</a>
+                <a class="text-white" href="order.php">Orders</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-white" href="admin/logout.php">Logout</a>
+                <?php else : ?>
+                <a class="text-white" href="admin/login.php">Login</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-white" href="admin/register.php">Register</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                <a class="text-dark px-2" href="<?php echo $res['link_facebook']; ?>">
+                <a class="text-white px-2" href="<?php echo $res['link_facebook']; ?>">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="text-dark px-2" href="<?php echo $res['link_twiiter']; ?>">
-                    <i class="fab fa-twitter"></i>
+                <a class="text-white px-2" href="<?php echo $res['link_whatsapp']; ?>">
+                <i class="fa-brands fa-whatsapp"></i>
                 </a>
-                <a class="text-dark px-2" href="<?php echo $res['link_instragram']; ?>">
-                    <i class="fab fa-instagram"></i>
                 </a>
             </div>
         </div>
     </div>
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
-            <a href="" class="text-decoration-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                        class="text-primary font-weight-bold border px-3 mr-1">Man's</span>Apparel</h1>
+            <a href="index.php" class="text-decoration-none">
+                <h2 class="mb-4 display-5 font-weight-semi-bold text-dark"><span class="text-white font-weight-bold bg-dark border border-white px-3" style="font-family: 'Poppins', sans-serif; margin-right: -5px;">B</span> lack & <span class="text-white font-weight-bold bg-dark border border-white px-3" style="font-family: 'Poppins', sans-serif;">W</span>hite</h2>
             </a>
+            <div class="row" style="margin-left: 35%; margin-top: -20px">
+                <p class="text-black font-weight-bold bg-white " style="font-family: 'Poppins', sans-serif;;">Since 2019</p>
+            </div>
         </div>
         <div class="col-lg-6 col-6 text-left">
-            <form action="">
+            <form method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" name="key" id="key"  class="form-control" placeholder="Search for products">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary">
+                        <button type="button" onclick="search(this.form)" class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search"></i>
-                        </span>
+                        </button>
                     </div>
                 </div>
             </form>

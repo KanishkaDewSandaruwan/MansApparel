@@ -77,43 +77,20 @@ function addMessage($data)
 	return mysqli_query($con, $sql);
 }
 
-function addResevation($data)
+function addReviews($data)
 {
     include 'connection.php';
 
-    $res_name = $data['res_name'];
-    $res_email = $data['res_email'];
-    $res_date = $data['res_date'];
-    $res_count = $data['res_count'];
-    $res_request = $data['res_request'];
-    $res_phone = $data['res_phone'];
+    $review_email = $data['review_email'];
+    $review_name = $data['review_name'];
+    $review_review = $data['review_review'];
+    $pid = $data['pid'];
 
 
-	$sql = "INSERT INTO resevation(res_name, res_email, res_date, res_count, res_request, date_updated, is_deleted, res_phone) 
-	VALUES('$res_name', '$res_email', '$res_date', '$res_count', '$res_request', now(), 0,'$res_phone')";
+	$sql = "INSERT INTO review(review_review, review_name, review_email, review_pid, date_updated) VALUES('$review_review', '$review_name', '$review_email', '$pid', now())";
 	return mysqli_query($con, $sql);
 }
 
-function addServes($data)
-{
-    include 'connection.php';
-
-	$pid = $data['pid'];
-    $serve_qty = $data['serve_qty'];
-
-	$res = getCountItemsByID($pid);
-
-	if($row = mysqli_fetch_assoc($res)){	
-		
-		if($row['product_qty'] > $serve_qty){
-			$sql = "INSERT INTO server_products(pid, serve_qty, date_updated, is_deleted) VALUES('$pid', '$serve_qty', now(), '0')";
-			mysqli_query($con, $sql);	
-			return productQtyReduce($pid, $serve_qty);
-		}else{
-			echo "5";
-		}
-	}
-}
 
 function addtoCart($pid, $customer_id, $product_price, $qty){
 	include 'connection.php';

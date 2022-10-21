@@ -17,8 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                         
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: uppercase;">Black & White</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -37,7 +36,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -45,7 +44,7 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div data-i18n="Layouts">Category</div>
@@ -170,14 +169,18 @@
                                         <td>
                                             <select
                                                 onchange='updateSubCatData(this, "<?php echo $cat_id; ?>","sub_category", "category", "cat_id")'
-                                                id="sub_category <?php echo $cat_id; ?>" class='form-control norad tx12'
+                                                id="sub_category <?php echo $cat_id; ?>" class='form-control norad tx12 
+                                                <?php if($row['sub_category'] == 0) {?>
+                                                bg-dark text-white
+                                                <?php } ?>
+                                                '
                                                 name="sub_category" type='text'>
                                                 <?php if($row['sub_category'] == 0 ){?>
                                                 <option value="0" selected>... This is Main Category ...</option>
                                                 <?php  }else{ ?>
                                                 <option value="0">... This is Main Category ...</option>
                                                 <?php }
-                                        $getallCat = getAllCategory();
+                                        $getallCat = getAllParentCategoryWithoutMe($cat_id);
                                         while($row2=mysqli_fetch_assoc($getallCat)){  ?>
                                                 <option value="<?php echo $row2['cat_id']; ?>"
                                                     <?php if ($row['sub_category']== $row2['cat_id']) echo "selected"; ?>>
@@ -206,7 +209,7 @@
                                             <img width="200px" src='<?php echo $img_src; ?>'>
 
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <?php if($row['sub_category'] == 0) {?>
                                             <div class="form-group">
                                                 <div class="form-check form-switch">
@@ -219,7 +222,7 @@
                                                 </div>
                                             </div>
                                             <?php } ?>
-                                        </td>
+                                        </td> -->
                                         <td><button type="button"
                                                 onclick="deleteDataCategory(<?php echo $row['cat_id']; ?>,'category', 'cat_id')"
                                                 class="btn btn-darkblue"> <i class="fa-solid fa-trash"></i>
@@ -264,7 +267,7 @@
                         <select class="form-select" name="sub_category" id="sub_category"
                             aria-label="Default select example">
                             <option value="0" selected>... Sub Category Selected None ...</option>
-                            <?php $getall = getAllCategory();
+                            <?php $getall = getAllParentCategory();
                                     while($row=mysqli_fetch_assoc($getall)){ ?>
                             <option value="<?php echo $row['cat_id']; ?>"><?php echo $row['cat_name'] ?></option>
                             <?php } ?>

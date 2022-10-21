@@ -24,7 +24,7 @@ function getAllColorByID($color_id)
 {
     include 'connection.php';
 
-    $viewcat = "SELECT * FROM colors WHERE is_deleted = '0' WHERE color_id = '$color_id' ";
+    $viewcat = "SELECT * FROM colors WHERE is_deleted = '0' AND color_id = '$color_id' ";
     return mysqli_query($con, $viewcat);
 }
 
@@ -40,7 +40,7 @@ function getAllsizeByID($size_id)
 {
     include 'connection.php';
 
-    $viewcat = "SELECT * FROM size WHERE is_deleted = '0' WHERE size_id = '$size_id' ";
+    $viewcat = "SELECT * FROM size WHERE is_deleted = '0' AND size_id = '$size_id' ";
     return mysqli_query($con, $viewcat);
 }
 
@@ -57,6 +57,14 @@ function getAllParentCategory()
     include 'connection.php';
 
     $viewcat = "SELECT * FROM category	 WHERE is_deleted = '0' AND sub_category = '0'";
+    return mysqli_query($con, $viewcat);
+}
+
+function getAllParentCategoryWithoutMe($cat_id)
+{
+    include 'connection.php';
+
+    $viewcat = "SELECT * FROM category	 WHERE is_deleted = '0' AND sub_category = '0' AND cat_id != '$cat_id'";
     return mysqli_query($con, $viewcat);
 }
 
@@ -125,6 +133,14 @@ function getItemsCondition($id, $field)
 	include 'connection.php';
 
 	$viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND product_active = '1' AND $field = '$id'";
+	return mysqli_query($con, $viewcat);
+}
+
+function getAllItemsSearch($key)
+{
+	include 'connection.php';
+
+	$viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND product_active = '1' AND product_name LIKE '%$key%' AND product_description LIKE '%$key%';";
 	return mysqli_query($con, $viewcat);
 }
 
@@ -243,6 +259,14 @@ function getAllMessages(){
 	return mysqli_query($con,$messages);
 }
 
+//reviews
+function getAllReviews($pid){
+	include 'connection.php';
+	
+	$review = "SELECT * FROM review WHERE review_pid = '$pid'";
+	return mysqli_query($con,$review);
+}
+
 
 //serve
 
@@ -297,22 +321,30 @@ function getAllOrderItemsBYOrder($order_id){
 	return mysqli_query($con,$viewcat);
 }
 
-//resevation
-
-function getAllResevation(){
+function getDailyReport(){
 	include 'connection.php';
 
-	$viewcat = "SELECT * FROM resevation WHERE is_deleted = '0' ORDER BY date_updated DESC";
+	$viewcat = "SELECT * FROM product_orders WHERE DAY(date_updated) = DAY(now())";
 	return mysqli_query($con,$viewcat);
 }
 
-function getAllResevationBycustomer($customer_id){
+function getWeeklyReport(){
 	include 'connection.php';
 
-	$viewcat = "SELECT * FROM resevation WHERE is_deleted = '0' ORDER BY date_updated DESC";
+	$NewDate=Date('y:m:d', strtotime('-7 days'));
+
+	$viewcat = "SELECT * FROM product_orders WHERE NOT(date_updated < '$NewDate'  OR date_updated >  now())";
 	return mysqli_query($con,$viewcat);
 }
 
+function getMonthlyReport(){
+	include 'connection.php';
+
+	$NewDate=Date('y:m:d', strtotime('-7 days'));
+
+	$viewcat = "SELECT * FROM product_orders WHERE MONTH(date_updated) = MONTH(now())";
+	return mysqli_query($con,$viewcat);
+}
 
 //count
 
@@ -329,6 +361,15 @@ function dataCountwithCondition($table, $condition){
 	include 'connection.php';
 
 	$counts = "SELECT * FROM $table $condition";
+	$res =  mysqli_query($con,$counts);
+    $count =  mysqli_num_rows($res);
+    echo $count;
+
+}
+function reviewCount($pid){
+	include 'connection.php';
+
+	$counts = "SELECT * FROM review WHERE review_pid = '$pid'";
 	$res =  mysqli_query($con,$counts);
     $count =  mysqli_num_rows($res);
     echo $count;

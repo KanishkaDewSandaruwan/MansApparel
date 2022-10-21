@@ -11,13 +11,13 @@
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
                     id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        <?php 
+                    <?php 
                         $getall = getAllParentCategory();
                         while($row=mysqli_fetch_assoc($getall)){ 
                             $cat_id = $row['cat_id'];
 
                             $getallCp2 = getAllSubCategory($cat_id);
-                            $row2 = mysqli_fetch_assoc($getallCp2);
+                            if( $row2 = mysqli_fetch_assoc($getallCp2)){
 
                             $getallCp3 = getAllItemsByParentCategory($row2['cat_id']);
                             $getallCp2 = getAllSubCategory($cat_id);
@@ -40,7 +40,7 @@
                                         ?>
                                 <a href="shop.php?cat_id=<?php echo $cat_id2; ?>"
                                     class="dropdown-item"><?php echo $row4['cat_name']; ?></a>
-                                <?php } } ?>
+                                <?php } } } ?>
 
                             </div>
                         </div>
@@ -63,14 +63,7 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="shop.php" class="nav-item nav-link">Shop</a>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                        <?php if(isset($_SESSION['customer'])) : ?>
-                        <a href="admin/logout.php" class="nav-item nav-link">Logout</a>
-                        <?php else : ?>
-                            <a href="admin/login.php" class="nav-item nav-link">Login</a>
-                            <a href="admin/register.php" class="nav-item nav-link">Register</a>
-                            <?php endif; ?>
+                            <a href="about.php" class="nav-item nav-link">About Us</a>
                         </div>
                     </div>
                 </nav>

@@ -121,12 +121,15 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImage
 
     if (in_array($imageFileType, $extensions_arr)) {
         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $img);
-        insertImagetoGallery($img);
+        insertImagetoGallery($_POST, $img);
     }
 
 }
 else if (isset($_GET['function_code']) && $_GET['function_code'] == 'addcontact') {
     addMessage($_POST);
+}
+else if (isset($_GET['function_code']) && $_GET['function_code'] == 'addReview') {
+    addReviews($_POST);
 }
 else if (isset($_GET['function_code']) && $_GET['function_code'] == 'addResevation') {
     addResevation($_POST);
@@ -161,5 +164,20 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImage
 
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'checkoutOrder') {
     checkoutOrder($_POST);
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'changeDescription') {
+    changeDesc($_POST);
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImageUploadAbout') {
+
+    $img = $_FILES['file']['name'];
+    $target_dir = "uploads/about/";
+    $target_file = $target_dir . basename($img);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $extensions_arr = array("jpg", "jpeg", "png", "gif", "jfif", "svg", "webp");
+
+    if (in_array($imageFileType, $extensions_arr)) {
+        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $img);
+        insertImagetoAboutGallery($img);
+    }
+
 }
 ?>

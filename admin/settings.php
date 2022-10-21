@@ -17,8 +17,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2">Men's Apparel</span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: uppercase;">Black & White</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -37,7 +36,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -121,6 +120,14 @@
                                 <div class=" rounded h-100 p-4">
 
                                     <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-2 mt-3">
+                                            <h6>Gallery : </h6>
+                                            </div>
+                                            <div class="col-md-2 mt-3">
+                                                <a href="gallery_image.php"> Gallery</a>
+                                            </div>
+                                        </div>
                                         <?php 
                                     $setting = getAllSettings();
                                     if($res = mysqli_fetch_assoc($setting)){ ?>
@@ -277,6 +284,36 @@
 
 
 
+                                                    <h6 style="margin-top: 100px;">ABOUT SETTINGS</h6>
+                                                    <hr>
+                                                    <?php
+                                                        $setting = getAllSettings();
+                                                        if($res = mysqli_fetch_assoc($setting)){ ?>
+
+                                                    <div class="col-md-12 mt-3">
+                                                        <label for="validationCustom01" class="form-label">About title</label>
+                                                        <input type="text"
+                                                            onchange='settingsUpdate(this, "about_title")'
+                                                            value="<?php echo $res['about_title']; ?>"
+                                                            class="form-control" id="about_title"
+                                                            placeholder="About title" required>
+                                                    </div>
+                                                    <div class="col-md-12 mt-3">
+                                                        <label for="validationCustom01" class="form-label">About Description</label>
+                                                        <input type="text"
+                                                            onchange='settingsUpdate(this, "about_desc")'
+                                                            value="<?php echo $res['about_desc']; ?>"
+                                                            class="form-control" id="about_desc"
+                                                            placeholder="Company Email Address" required>
+                                                    </div>
+                                                   
+
+
+                                                    <?php } ?>
+
+
+
+
 
                                                     <h6 style="margin-top: 100px;">CONTACT SETTINGS</h6>
                                                     <hr>
@@ -325,27 +362,17 @@
                                                             href="<?php echo $res['link_facebook']; ?>"><?php echo $res['link_facebook']; ?></a>
                                                     </div>
                                                     <div class="col-md-12 mt-3">
-                                                        <label for="validationCustom01" class="form-label">Twitter
+                                                        <label for="validationCustom01" class="form-label">WhatsApp
                                                             Link</label>
                                                         <input type="text"
-                                                            onchange='settingsUpdate(this, "link_twiiter")'
-                                                            value="<?php echo $res['link_twiiter']; ?>"
-                                                            class="form-control" id="link_twiiter"
+                                                            onchange='settingsUpdate(this, "link_whatsapp")'
+                                                            value="<?php echo $res['link_whatsapp']; ?>"
+                                                            class="form-control" id="link_whatsapp"
                                                             placeholder="Twitter Link" required>
                                                         <a
-                                                            href="<?php echo $res['link_twiiter']; ?>"><?php echo $res['link_twiiter']; ?></a>
+                                                            href="<?php echo $res['link_whatsapp']; ?>"><?php echo $res['link_whatsapp']; ?></a>
                                                     </div>
-                                                    <div class="col-md-12 mt-3">
-                                                        <label for="validationCustom01" class="form-label">Instragram
-                                                            Link</label>
-                                                        <input type="text"
-                                                            onchange='settingsUpdate(this, "link_instragram")'
-                                                            value="<?php echo $res['link_instragram']; ?>"
-                                                            class="form-control" id="link_instragram"
-                                                            placeholder="Instragram Link" required>
-                                                        <a
-                                                            href="<?php echo $res['link_instragram']; ?>"><?php echo $res['link_instragram']; ?></a>
-                                                    </div>
+                                                   
 
 
                                                     <?php } ?>

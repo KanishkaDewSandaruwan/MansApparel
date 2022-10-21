@@ -97,6 +97,16 @@ function changePageSettings($data)
     return mysqli_query($con, $sql);
 }
 
+function changeDesc($data)
+{
+    include 'connection.php';
+    $id = $data['id'];
+    $product_description = $data['product_description'];
+
+    $sql = "UPDATE products SET product_description = '$product_description' WHERE pid = '$id'";
+    return mysqli_query($con, $sql);
+}
+
 function editSettingImage($data, $img)
 {
     include 'connection.php';

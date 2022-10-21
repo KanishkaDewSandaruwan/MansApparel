@@ -123,6 +123,68 @@ addItems = (form) => {
     } else { errorMessage("Please Enter Product Name"); }
 }
 
+changeDescription = (form) => {
+    let fd = new FormData(form);
+
+    $.ajax({
+        method: "POST",
+        url: API_PATH + "changeDescription",
+        data: fd,
+        success: function ($data) {
+            console.log($data);
+            loading("Product Description Saving Success..")
+            
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        error: function (error) {
+            console.log(`Error ${error}`);
+        }
+    });
+
+}
+
+insertImage = (ele) => {
+    var formData = new FormData(ele);
+
+    $.ajax({
+        method: "POST",
+        url: API_PATH + "insertImageUpload",
+        data: formData,
+        success: function ($data) {
+            console.log($data);
+            loading("Image Uploding...");
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        error: function (error) {
+            console.log(`Error ${error}`);
+        }
+    });
+}
+
+insertImageAbout = (ele) => {
+    var formData = new FormData(ele);
+
+    $.ajax({
+        method: "POST",
+        url: API_PATH + "insertImageUploadAbout",
+        data: formData,
+        success: function ($data) {
+            console.log($data);
+            loading("Image Uploding...");
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        error: function (error) {
+            console.log(`Error ${error}`);
+        }
+    });
+}
+
 addCustomer = (form) => {
     let fd = new FormData(form);
 
