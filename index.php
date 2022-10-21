@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 
 <head>
     <meta charset="utf-8">
-         <title>Man's Apparel</title>
+    <title>Man's Apparel</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -14,7 +14,8 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -27,9 +28,9 @@
 </head>
 
 <body>
-<?php include 'pages/topbar.php'; ?>
-        <!-- Navbar Start -->
-        <div class="container-fluid mb-5">
+    <?php include 'pages/topbar.php'; ?>
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
@@ -54,12 +55,12 @@
 
                             if (mysqli_fetch_assoc($getallCp2) && mysqli_fetch_assoc($getallCp3)) {
                                 ?>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link" data-toggle="dropdown"><?php echo $row['cat_name']; ?> <i
-                                        class="fa fa-angle-down float-right mt-1"></i></a>
-                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown"><?php echo $row['cat_name']; ?> <i
+                                    class="fa fa-angle-down float-right mt-1"></i></a>
+                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
 
-                                    <?php 
+                                <?php 
                                     $getallCat = getAllSubCategory($cat_id);
 
                                     while($row3 = mysqli_fetch_assoc($getallCat)){ 
@@ -68,11 +69,12 @@
                                     $getallCp3 = getAllItemsByParentCategory($cat_id2);
                                     if ($row4 = mysqli_fetch_assoc($getallCp3)) {
                                         ?>
-                                    <a href="shop.php?cat_id=<?php echo $cat_id2; ?>" class="dropdown-item"><?php echo $row4['cat_name']; ?></a>
-                                    <?php } } ?>
+                                <a href="shop.php?cat_id=<?php echo $cat_id2; ?>"
+                                    class="dropdown-item"><?php echo $row4['cat_name']; ?></a>
+                                <?php } } ?>
 
-                                </div>
                             </div>
+                        </div>
 
                         <?php } } } ?>
                         <!-- <a href="" class="nav-item nav-link">Shirts</a>
@@ -111,8 +113,10 @@
                             <img class="img-fluid" src="<?php echo $header_src; ?>" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3"> <?php echo $res['header_title']; ?></h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4"> <?php echo $res['header_desc']; ?></h3>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">
+                                        <?php echo $res['header_title']; ?></h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">
+                                        <?php echo $res['header_desc']; ?></h3>
                                     <a href="shop.php" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
@@ -163,7 +167,7 @@
     <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
-        <?php 
+            <?php 
         $getallCat = AllSubCategory();
 
         while($row = mysqli_fetch_assoc($getallCat)){ 
@@ -178,8 +182,9 @@
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <p class="text-right"><?php echo $count; ?> Products</p>
-                    <a href="shop.php?cat_id=<?php echo $cat_id; ?>" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid"  src="<?php echo $img_src; ?>" alt="">
+                    <a href="shop.php?cat_id=<?php echo $cat_id; ?>"
+                        class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="<?php echo $img_src; ?>" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0"><?php echo $row['cat_name']; ?></h5>
                 </div>
@@ -219,15 +224,15 @@
     <!-- Offer End -->
 
 
-    
+
     <?php
     $getallCp2 = getAllItemsLatest();
     while ($row3 = mysqli_fetch_assoc($getallCp2)) {
         $pid = $row3['pid'];
         $img = $row3['product_image'];
         $img_src = "server/uploads/products/" . $img;
-        $count = mysqli_num_rows($result);
-        if($count > 0){ ?>
+        $count = mysqli_num_rows($getallCp2);
+        if($count > 0 || $count < 6){ ?>
 
     <!-- Products Start -->
     <div class="container-fluid pt-5">
@@ -235,17 +240,18 @@
             <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-        <?php
+            <?php
         $getallCp2 = getAllItemsLatest();
         while ($row3 = mysqli_fetch_assoc($getallCp2)) {
             $pid = $row3['pid'];
             $img = $row3['product_image'];
             $img_src = "server/uploads/products/" . $img;?>
 
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
+            <div class="col-lg-3 col-md-4 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" style="width: 300px; height: 400px;" src="<?php echo $img_src; ?>" alt="">
+                        <img class="img-fluid w-100" style="width: 100%; min-height: 300px;" src="<?php echo $img_src; ?>"
+                            alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>
@@ -254,13 +260,15 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.php?pid=<?php echo $pid; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <a href="detail.php?pid=<?php echo $pid; ?>" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
             </div>
             <?php } ?>
-   
+
         </div>
     </div>
     <!-- Products End -->
@@ -273,7 +281,7 @@
             <h2 class="section-title px-5"><span class="px-2">Our Products</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-        <?php
+            <?php
             $getallCp2 = getAllAvailableItems();
             $count = 0;
             while ($row3 = mysqli_fetch_assoc($getallCp2)) {
@@ -281,10 +289,11 @@
                 $img = $row3['product_image'];
                 $img_src = "server/uploads/products/" . $img;
                 if($count < 6){ ?>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="col-lg-3 col-md-4 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" style="width: 300px; height: 400px;" src="<?php echo $img_src; ?>" alt="">
+                        <img class="img-fluid w-100" style="width: 100%; min-height: 300px;" src="<?php echo $img_src; ?>"
+                            alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>
@@ -293,13 +302,16 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.php?pid=<?php echo $pid; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <button onclick="addtoCartProduct(<?php echo $pid; ?>, <?php echo $row3['product_price']; ?>)"  type="button" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                        <a href="detail.php?pid=<?php echo $pid; ?>" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <button onclick="addtoCartProduct(<?php echo $pid; ?>, <?php echo $row3['product_price']; ?>)"
+                            type="button" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                     </div>
                 </div>
             </div>
             <?php } $count++; } ?>
-           
+
 
         </div>
     </div>

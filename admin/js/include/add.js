@@ -105,11 +105,11 @@ addItems = (form) => {
                 url: API_PATH + "addProducts",
                 data: fd,
                 success: function ($data) {
-                    console.log($data);
+              
                     if ($data > 0) {
-                        normalAlertNoReload("error", "This Product is Alrady Here..");
+                        errorMessage("This Size Already Registerd!");
                     } else {
-                        loading("Product Saving Success..")
+                        successToast();
                     }
                 },
                 cache: false,

@@ -47,12 +47,14 @@ function addProduct($data, $img)
 	$product_qty = $data['product_qty'];
 	$product_active = $data['product_active'];
 	$cat_id = $data['cat_id'];
+	$size_id = $data['size_id'];
+	$color_id = $data['color_id'];
 
 	$count = checkProductByName($product_name);
 
 	if ($count == 0) {
 
-		$sql = "INSERT INTO products(product_name, product_description, product_highlight, product_price, product_qty, product_active, date_updated, is_deleted, product_image, cat_id) VALUES('$product_name', '$product_description', '$product_highlight', '$product_price', '$product_qty', '$product_active', now(), 0 ,'$img', '$cat_id')";
+		$sql = "INSERT INTO products(product_name, product_description, product_highlight, product_price, product_qty, product_active, date_updated, is_deleted, product_image, cat_id, size_id, color_id) VALUES('$product_name', '$product_description', '$product_highlight', '$product_price', '$product_qty', '$product_active', now(), 0 ,'$img', '$cat_id', '$size_id', '$color_id')";
 		return mysqli_query($con, $sql);
 
 	}
