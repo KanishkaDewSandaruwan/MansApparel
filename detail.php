@@ -70,7 +70,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img style="width: 500px; height: 600px;" src="<?php echo $img_src; ?>" alt="Image">
+                            <img style="width: 500px;" src="<?php echo $img_src; ?>" alt="Image">
                         </div>
                         <?php
                         $getall = getAllProductgalleryImagesByPID($pid);

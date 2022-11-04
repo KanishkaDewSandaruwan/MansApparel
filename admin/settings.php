@@ -128,6 +128,14 @@
                                                 <a href="gallery_image.php"> Gallery</a>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-2 mt-3">
+                                            <h6>Slide Show : </h6>
+                                            </div>
+                                            <div class="col-md-2 mt-3">
+                                                <a href="slide_show.php"> Slide Show</a>
+                                            </div>
+                                        </div>
                                         <?php 
                                     $setting = getAllSettings();
                                     if($res = mysqli_fetch_assoc($setting)){ ?>

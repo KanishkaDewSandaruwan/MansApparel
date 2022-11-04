@@ -37,7 +37,7 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="customer.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>
                             <div data-i18n="Analytics">Customer</div>
@@ -82,7 +82,7 @@
                             <div data-i18n="Analytics">Orders</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="message.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-file"></i>
                             <div data-i18n="Analytics">Message</div>
@@ -93,7 +93,6 @@
                 </ul>
             </aside>
             <!-- / Menu -->
-
 
 
             <?php include 'template/navbar.php'; ?>
@@ -110,11 +109,16 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="message.php">Message</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Message List</li>
+                                        <li class="breadcrumb-item"><a href="products.php">Slide Show</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Slide Show List</li>
                                     </ol>
                                 </nav>
-                                <h3 class="mb-4">Message List</h3>
+                                <h3 class="mb-4">Slide Show List</h3>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SlideShowModal">
+                                    Add
+                                    New</button>
                             </div>
                         </div>
                         <hr>
@@ -122,40 +126,27 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Subject</th>
-                                        <th>Message</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Subject</th>
-                                        <th>Message</th>
-                                    </tr>
-                                </tfoot>
                                 <tbody>
-                                    <?php 
-                                $getall = getAllMessages();
+                                    <?php
+                                    $getall = getAllSlideShow();
 
-                                while($row=mysqli_fetch_assoc($getall)){ ?>
+                                    while ($row = mysqli_fetch_assoc($getall)) {
+                                        $img = $row['slideshow_image'];
+                                        $img_src = "../server/uploads/slideshow/" . $img;
+
+                                    ?>
+
                                     <tr>
-
-                                        <td>#<?php echo $row['contact_id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
-                                        <td><?php echo $row['subject']; ?></td>
-                                        <td><?php echo $row['message']; ?></td>
-                                        <td><?php echo $row['date_updated']; ?></td>
-                                        <td>
-
-                                            <button type="button"
-                                                onclick="permenantdeleteData(<?php echo $row['contact_id']; ?>, 'contact', 'contact_id' )"
-                                                class="btn btn-darkblue"> <i class="fa-solid fa-trash"></i> </button>
+                                        <td><?php echo $row['slideshow_title']; ?></td>
+                                        <td><img width="100px" src='<?php echo $img_src; ?>'></td>
+                                        <td> <button type="button"
+                                                onclick="permenantdeleteData(<?php echo $row['slideshow_id']; ?>, 'slideshow', 'slideshow_id')"
+                                                class="btn btn-darkblue"> <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
 
@@ -173,5 +164,37 @@
 
                 <?php include 'template/footer.php'; ?>
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="SlideShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-white">
+                <form method="POST" accept="php_parts/addCat.php" class="row g-3 needs-validation" novalidate
+                    enctype="multipart/form-data">
+                    <div class="col-md-12">
+                        <label for="cat_name" class="form-label">Slide Show</label>
+                        <input type="text" class="form-control" name="slideshow_title" id="slideshow_title"
+                            placeholder="Slide Show" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="file" class="form-label">Slide Show Image file</label>
+                        <input class="form-control" name="file" type="file" id="file">
+                    </div>
+            </div>
+            <div class="modal-footer bg-white">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="addSlideshow(this.form)" name="submit" class="btn btn-primary">Save
+                    changes</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 </html>

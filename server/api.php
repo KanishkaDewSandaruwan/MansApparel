@@ -162,6 +162,19 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImage
         insertImagetoGallery($img);
     }
 
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'addslideshowimages') {
+
+    $img = $_FILES['file']['name'];
+    $target_dir = "uploads/slideshow/";
+    $target_file = $target_dir . basename($img);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $extensions_arr = array("jpg", "jpeg", "png", "gif", "jfif", "svg", "webp");
+
+    if (in_array($imageFileType, $extensions_arr)) {
+        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $img);
+        addSlideshow($_POST , $img);
+    }
+
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'checkoutOrder') {
     checkoutOrder($_POST);
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'changeDescription') {

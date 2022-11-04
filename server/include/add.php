@@ -35,6 +35,17 @@ function createSize($data)
 
 }
 
+function addSlideshow($data, $img)
+{
+	include 'connection.php';
+
+	$slideshow_title = $data['slideshow_title'];
+
+	$sql = "INSERT INTO slideshow(slideshow_title, slideshow_image) VALUES('$slideshow_title', '$img')";
+	return mysqli_query($con,$sql);
+
+}
+
 
 function addProduct($data, $img)
 {

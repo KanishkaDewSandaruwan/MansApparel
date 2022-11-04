@@ -128,6 +128,14 @@ function getAllAvailableItems()
 	return mysqli_query($con, $viewcat);
 }
 
+function getAllSlideShow()
+{
+	include 'connection.php';
+
+	$viewcat = "SELECT * FROM slideshow";
+	return mysqli_query($con, $viewcat);
+}
+
 function getItemsCondition($id, $field)
 {
 	include 'connection.php';

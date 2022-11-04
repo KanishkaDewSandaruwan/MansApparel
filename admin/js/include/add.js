@@ -145,6 +145,35 @@ changeDescription = (form) => {
 
 }
 
+addSlideshow = (form) => {
+    let fd = new FormData(form);
+
+    if (fd.get('slideshow_title').trim() != '') {
+        if (fd.get("file") != '') {
+
+            $.ajax({
+                method: "POST",
+                url: API_PATH + "addslideshowimages",
+                data: fd,
+                success: function ($data) {
+                    console.log($data);
+
+                  
+                        successToast();
+
+                    
+                },
+                cache: false,
+                contentType: false,
+                processData: false,
+                error: function (error) {
+                    console.log(`Error ${error}`);
+                }
+            });
+        } else { errorMessage("Please SelectImage"); }
+    } else { errorMessage("Please Enter slide show"); }
+}
+
 insertImage = (ele) => {
     var formData = new FormData(ele);
 

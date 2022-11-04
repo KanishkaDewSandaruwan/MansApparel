@@ -107,22 +107,40 @@
                         </div>
                     </div>
                 </nav>
+
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="<?php echo $header_src; ?>" alt="Image">
+                        <?php
+                    $getall = getAllSlideShow();
+                    $count =1;
+                    while ($row = mysqli_fetch_assoc($getall)) {
+                        $img = $row['slideshow_image'];
+                        $img_src = "server/uploads/slideshow/" . $img;
+
+                    ?>
+                        <div class="carousel-item <?php if($count == 1) echo 'active'; ?> " style="height: 410px;">
+                            <img class="img-fluid" src="<?php echo $img_src; ?>" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">
-                                        <?php echo $res['header_title']; ?></h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">
-                                        <?php echo $res['header_desc']; ?></h3>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3"><?php echo $res['header_title']; ?></h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4"><?php echo $row['slideshow_title']; ?></h3>
                                     <a href="shop.php" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <?php  $count++; } ?>
 
+                    </div>
+                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-prev-icon mb-n2"></span>
+                        </div>
+                    </a>
+                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                            <span class="carousel-control-next-icon mb-n2"></span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -216,11 +234,11 @@
             $img = $row3['product_image'];
             $img_src = "server/uploads/products/" . $img;?>
 
-            <div class="col-lg-3 col-md-4 col-sm-12 pb-1">
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid img-thumbnail" style="width: 100%; height: 300px;" src="<?php echo $img_src; ?>"
-                            alt="">
+                        <img class="img-fluid img-thumbnail" style="width: 100%; height: auto;"
+                            src="<?php echo $img_src; ?>" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>
@@ -291,11 +309,11 @@
                 $img = $row3['product_image'];
                 $img_src = "server/uploads/products/" . $img;
                 if($count < 6){ ?>
-            <div class="col-lg-3 col-md-4 col-sm-12 pb-1">
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid img-thumbnail" style="width: 100%; height: 300px;" src="<?php echo $img_src; ?>"
-                            alt="">
+                        <img class="img-fluid img-thumbnail" style="width: 100%; height: auto;"
+                            src="<?php echo $img_src; ?>" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"> <?php echo $row3['product_name']; ?></h6>
