@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2022 at 07:38 PM
+-- Generation Time: Nov 05, 2022 at 04:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,7 +41,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `pid`, `customer_id`, `price`, `qty`, `date_updated`) VALUES
-(73, 17, 1, 450, 1, '2022-10-02 16:51:17');
+(73, 17, 1, 450, 1, '2022-10-02 16:51:17'),
+(96, 16, 3, 450, 2, '2022-11-04 23:33:23'),
+(97, 16, 6, 450, 1, '2022-11-04 23:29:16');
 
 -- --------------------------------------------------------
 
@@ -70,12 +72,12 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_image`, `is_deleted`, `date_u
 (4, 'dd', 'images.jfif', 1, '2022-09-05 21:21:35', 0, 0),
 (5, 'Phone Acc', 'hImYqMss.png', 1, '2022-09-05 22:23:22', 0, 0),
 (6, '', 'bottles-famous-global-beer-brands-poznan-pol-mar-including-heineken-becks-bud-miller-corona-stella-artois-san-miguel-143170440.jpg', 1, '2022-10-01 10:17:33', 0, 0),
-(7, 'Shirts', 'Basin Mixer.jpg', 0, '2022-10-01 10:18:50', 0, 0),
-(8, 'Trouser', 'bottles-famous-global-beer-brands-poznan-pol-mar-including-heineken-becks-bud-miller-corona-stella-artois-san-miguel-143170440.jpg', 0, '2022-10-01 10:20:19', 0, 1),
+(7, 'Shirts', 'product-1.jpg', 0, '2022-10-01 10:18:50', 0, 0),
+(8, 'Trouser', 'product-7.jpg', 0, '2022-10-01 10:20:19', 0, 1),
 (9, 'Burger', 'download.jfif', 1, '2022-10-01 14:49:14', 9, 0),
 (10, 'Burger', 'download.jfif', 1, '2022-10-01 14:49:15', 7, 0),
 (11, 'Burger', 'fast-food.jpg', 1, '2022-10-01 14:49:40', 7, 0),
-(12, 'linen Shirt', 'aussie-style-beef-and-salad-tacos-86525-1.jpeg', 0, '2022-10-01 15:35:24', 7, 0),
+(12, 'linen Shirt', 'Sink Accessories.jpg', 0, '2022-10-01 15:35:24', 7, 0),
 (13, 'Dew', 'dsd.PNG', 1, '2022-10-01 22:24:45', 0, 0),
 (14, 'Dews', 'dsd.PNG', 1, '2022-10-01 22:26:14', 0, 0),
 (15, 'Main', 'download.jfif', 1, '2022-10-02 13:43:02', 0, 0),
@@ -87,9 +89,12 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_image`, `is_deleted`, `date_u
 (21, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:29', 8, 0),
 (22, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:48', 8, 0),
 (23, 'Beer', 'images.jfif', 1, '2022-10-02 15:37:55', 8, 0),
-(24, 'Dew', 'Basin Mixer.jpg', 0, '2022-10-16 17:02:54', 8, 0),
-(25, 'Shoes', 'cat-6.jpg', 0, '2022-10-21 11:33:45', 7, 0),
-(26, 'Deck Shoues', 'cat-6.jpg', 1, '2022-10-21 11:34:31', 26, 0);
+(24, 'Linnen Frock', 'product-3.jpg', 0, '2022-10-16 17:02:54', 28, 0),
+(25, 'Shoes', 'Plumbing Hardware.jpg', 0, '2022-10-21 11:33:45', 7, 0),
+(26, 'Deck Shoues', 'cat-6.jpg', 1, '2022-10-21 11:34:31', 26, 0),
+(27, 'Bedsheet', 'carousel-2.jpg', 1, '2022-10-22 10:28:54', 7, 0),
+(28, 'Frock', 'product-7.jpg', 0, '2022-10-22 11:53:24', 0, 0),
+(29, 'Shoes', 'Showers.jpg', 0, '2022-11-04 23:23:44', 7, 0);
 
 -- --------------------------------------------------------
 
@@ -183,11 +188,11 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`gallery_id`, `gallery_image`) VALUES
-(20, 'carousel-1.jpg'),
-(21, 'carousel-2.jpg'),
-(22, 'cat-4.jpg'),
-(23, 'carousel-2.jpg'),
-(24, 'carousel-1.jpg');
+(28, '2020-nissan-kicks1 (1).webp'),
+(29, '2020-nissan-kicks1.webp'),
+(30, 'z_p-i--Vehicle.jpg'),
+(31, 'images (1).jpeg'),
+(32, 'images.jpeg');
 
 -- --------------------------------------------------------
 
@@ -238,35 +243,38 @@ CREATE TABLE `products` (
   `product_image` varchar(255) NOT NULL,
   `cat_id` int(255) NOT NULL,
   `size_id` int(255) NOT NULL,
-  `color_id` int(255) NOT NULL,
-  `size_chart` varchar(255) NOT NULL
+  `color_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pid`, `product_name`, `product_description`, `product_highlight`, `product_price`, `product_qty`, `product_active`, `date_updated`, `is_deleted`, `product_image`, `cat_id`, `size_id`, `color_id`, `size_chart`) VALUES
-(1, 'Arract', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', '35.8 alcohol', 250, 1700, 1, '2022-10-03 00:47:49', 1, 'images.jfif', 20, 0, 0, ''),
-(3, 'Chicken Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'Best Bag', 55, 15, 1, '2022-10-19 23:48:51', 1, 'fast-food.jpg', 9, 1, 1, ''),
-(9, 'Tops', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 's', 4500, 5, 0, '2022-09-11 12:09:22', 1, 'images.jfif', 1, 0, 0, ''),
-(10, 'Office Slipers', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 2500, 50, 0, '2022-09-11 12:11:27', 1, 'download.jfif', 3, 0, 0, ''),
-(11, 'Office Casual', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'best slipers', 4500, 5, 0, '2022-09-11 12:07:26', 1, 'download.jfif', 3, 0, 0, ''),
-(12, 'Speeker', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 250, 50, 0, '2022-09-11 12:11:47', 1, 'direct.PNG', 1, 0, 0, ''),
-(13, 'Office Slipers Profecional', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 6500, 5, 0, '2022-09-11 12:06:55', 1, 'download.jfif', 3, 0, 0, ''),
-(14, 'Bata Waves', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 8500, 5, 0, '2022-09-11 11:52:42', 1, 'images.jfif', 1, 0, 0, ''),
-(16, 'Sport T Shirt', 'uygugyuguuuhbhub', 'Premium Scoop T-Shirt Premium tee, scoop neck, regular fit', 450, 7, 1, '2022-10-21 18:01:49', 0, 'WhatsApp Image 2022-10-21 at 12.14.09.jpg', 12, 5, 3, ''),
-(17, 'Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasas', 450, 2, 1, '2022-10-02 20:21:12', 1, 'download.jfif', 9, 3, 3, ''),
-(18, 'Dew1', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 450, 5, 1, '2022-10-01 22:25:14', 1, 'dsd.PNG', 14, 0, 0, ''),
-(19, 'sasa', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 456, 5, 1, '2022-10-01 22:26:38', 1, 'dsd.PNG', 14, 0, 0, ''),
-(20, 'sasahhh', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 545, 45, 1, '2022-10-01 22:29:10', 1, 'dsd.PNG', 14, 0, 0, ''),
-(21, 'gfgfg', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'dsdsd', 778, 888, 1, '2022-10-01 22:33:08', 1, 'dsd.PNG', 14, 0, 0, ''),
-(22, 'asa', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 445, 4, 1, '2022-10-19 23:48:51', 0, 'product-7.jpg', 24, 5, 1, ''),
-(23, 'Corton Tshire', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 650, 5, 1, '2022-10-16 22:01:09', 1, 'Basin Mixer.jpg', 9, 0, 0, ''),
-(24, 'sssss', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 450, 5, 0, '2022-10-16 22:01:50', 1, 'Kitchens Accessories.jpg', 9, 0, 0, ''),
-(25, 'Linen Shirt', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'asas', 4562, 5, 1, '2022-10-21 18:01:49', 0, 'Kitchens Accessories.jpg', 12, 0, 0, ''),
-(26, 'sa', 'sa', 'sa', 4454, 5, 1, '2022-10-21 21:39:19', 0, 'offer-2.png', 12, 0, 0, ''),
-(27, 'sas', 'sa', 'sa', 45, 45, 1, '2022-10-21 21:39:46', 0, 'offer-1.png', 24, 0, 0, '');
+INSERT INTO `products` (`pid`, `product_name`, `product_description`, `product_highlight`, `product_price`, `product_qty`, `product_active`, `date_updated`, `is_deleted`, `product_image`, `cat_id`, `size_id`, `color_id`) VALUES
+(1, 'Arract', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', '35.8 alcohol', 250, 1700, 1, '2022-10-03 00:47:49', 1, 'images.jfif', 20, 0, 0),
+(3, 'Chicken Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'Best Bag', 55, 15, 1, '2022-10-19 23:48:51', 1, 'fast-food.jpg', 9, 1, 1),
+(9, 'Tops', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 's', 4500, 5, 0, '2022-09-11 12:09:22', 1, 'images.jfif', 1, 0, 0),
+(10, 'Office Slipers', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 2500, 50, 0, '2022-09-11 12:11:27', 1, 'download.jfif', 3, 0, 0),
+(11, 'Office Casual', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'best slipers', 4500, 5, 0, '2022-09-11 12:07:26', 1, 'download.jfif', 3, 0, 0),
+(12, 'Speeker', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 250, 50, 0, '2022-09-11 12:11:47', 1, 'direct.PNG', 1, 0, 0),
+(13, 'Office Slipers Profecional', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 6500, 5, 0, '2022-09-11 12:06:55', 1, 'download.jfif', 3, 0, 0),
+(14, 'Bata Waves', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 8500, 5, 0, '2022-09-11 11:52:42', 1, 'images.jfif', 1, 0, 0),
+(16, 'Sport T Shirts', 'uygugyuguuuhbhub', 'Premium Scoop T-Shirt Premium tee, scoop neck, regular fit', 450, 7, 1, '2022-10-21 18:01:49', 0, 'product-3.jpg', 12, 5, 3),
+(17, 'Burger', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasas', 450, 2, 1, '2022-10-02 20:21:12', 1, 'download.jfif', 9, 3, 3),
+(18, 'Dew1', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 450, 5, 1, '2022-10-01 22:25:14', 1, 'dsd.PNG', 14, 0, 0),
+(19, 'sasa', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 456, 5, 1, '2022-10-01 22:26:38', 1, 'dsd.PNG', 14, 0, 0),
+(20, 'sasahhh', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sasa', 545, 45, 1, '2022-10-01 22:29:10', 1, 'dsd.PNG', 14, 0, 0),
+(21, 'gfgfg', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'dsdsd', 778, 888, 1, '2022-10-01 22:33:08', 1, 'dsd.PNG', 14, 0, 0),
+(22, 'Black Linnen Frock', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 446, 3, 1, '2022-10-19 23:48:51', 0, 'product-4.jpg', 25, 5, 1),
+(23, 'Corton Tshire', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'sas', 650, 5, 1, '2022-10-16 22:01:09', 1, 'Basin Mixer.jpg', 9, 0, 0),
+(24, 'sssss', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'ss', 450, 5, 0, '2022-10-16 22:01:50', 1, 'Kitchens Accessories.jpg', 9, 0, 0),
+(25, 'Linen Shirt', '<ul><li>asasasa</li><li>sasas</li><li>asasa</li></ul>', 'asas', 4562, 5, 0, '2022-10-21 18:01:49', 1, 'Kitchens Accessories.jpg', 12, 0, 0),
+(26, 'White Top Medium', 'sa', 'sa', 4454, 5, 1, '2022-10-21 21:39:19', 0, 'product-2.jpg', 12, 5, 3),
+(27, 'Black Skin Large', 'sa', 'sa', 45, 45, 1, '2022-10-21 21:39:46', 0, 'product-5.jpg', 24, 3, 3),
+(28, 'White Top', 'ds', 'dsds', 45, 4, 1, '2022-10-21 23:29:02', 0, 'product-6.jpg', 24, 3, 3),
+(29, 'sassasas', 'sas', 'asa', 454, 5, 1, '2022-10-21 23:34:37', 1, 'product-8.jpg', 27, 5, 1),
+(30, 'Spects', 'fdf', '454', 454, 43, 0, '2022-10-21 23:37:28', 0, 'offer-2.png', 12, 1, 1),
+(31, 'Black Skiny', '<ul><li>Black Color</li><li>Short tide</li></ul>', '', 1500, 10, 1, '2022-10-22 11:51:04', 0, 'product-4.jpg', 24, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -401,6 +409,26 @@ INSERT INTO `size` (`size_id`, `size_name`, `size_description`, `is_deleted`, `d
 (4, 'L', '256', 1, '2022-10-16 21:47:21'),
 (5, 'S', 'dssds', 0, '2022-10-21 13:25:15');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slideshow`
+--
+
+CREATE TABLE `slideshow` (
+  `slideshow_id` int(11) NOT NULL,
+  `slideshow_title` varchar(255) NOT NULL,
+  `slideshow_image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `slideshow`
+--
+
+INSERT INTO `slideshow` (`slideshow_id`, `slideshow_title`, `slideshow_image`) VALUES
+(7, 'sasas', 'Kitchens Accessories.jpg'),
+(8, 'Dewew', 'Spouts.jpg');
+
 --
 -- Indexes for dumped tables
 --
@@ -478,6 +506,12 @@ ALTER TABLE `size`
   ADD PRIMARY KEY (`size_id`);
 
 --
+-- Indexes for table `slideshow`
+--
+ALTER TABLE `slideshow`
+  ADD PRIMARY KEY (`slideshow_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -485,13 +519,13 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `colors`
@@ -515,7 +549,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `order_items`
@@ -527,7 +561,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `product_image_gallery`
@@ -552,6 +586,12 @@ ALTER TABLE `review`
 --
 ALTER TABLE `size`
   MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `slideshow`
+--
+ALTER TABLE `slideshow`
+  MODIFY `slideshow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
