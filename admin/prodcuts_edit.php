@@ -259,20 +259,20 @@
                                             class="btn btn-primary">Update Description</button>
                                     </div>
                                 </form>
-                                <script>
-                                $('#product_description').summernote({
-                                    placeholder: 'Article Content',
-                                    tabsize: 2,
-                                    height: 120,
-                                    toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                    ]
-                                });
-                                </script>
+                                    <script>
+                                    $('#product_description').summernote({
+                                        placeholder: 'Product Description',
+                                        tabsize: 2,
+                                        height: 120,
+                                        toolbar: [
+                                            ['style', ['style']],
+                                            ['font', ['bold', 'underline', 'clear']],
+                                            ['color', ['color']],
+                                            ['para', ['ul', 'ol', 'paragraph']],
+                                            ['view', ['fullscreen', 'codeview', 'help']]
+                                        ]
+                                    });
+                                    </script>
 
                             </div>
 

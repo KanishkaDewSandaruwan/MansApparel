@@ -144,6 +144,27 @@ changeDescription = (form) => {
     });
 
 }
+changeAboutDescription = (form) => {
+    let fd = new FormData(form);
+
+    $.ajax({
+        method: "POST",
+        url: API_PATH + "changeAboutDescription",
+        data: fd,
+        success: function ($data) {
+            console.log($data);
+            loading("About Description Saving Success..")
+            
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        error: function (error) {
+            console.log(`Error ${error}`);
+        }
+    });
+
+}
 
 addSlideshow = (form) => {
     let fd = new FormData(form);

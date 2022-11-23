@@ -179,6 +179,8 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImage
     checkoutOrder($_POST);
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'changeDescription') {
     changeDesc($_POST);
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'changeAboutDescription') {
+    changeAboutDescription($_POST);
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'insertImageUploadAbout') {
 
     $img = $_FILES['file']['name'];

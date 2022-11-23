@@ -308,11 +308,33 @@
                                                     </div>
                                                     <div class="col-md-12 mt-3">
                                                         <label for="validationCustom01" class="form-label">About Description</label>
-                                                        <input type="text"
+                                                        <form enctype="multipart/form-data" method="POST">
+                                                        <div class="mb-3">
+                                                            <textarea id="about_desc"
+                                                                name="about_desc"><?php echo $res['about_desc']; ?></textarea>
+                                                            <button type="button" onclick="changeAboutDescription(this.form)"
+                                                                class="btn btn-primary">Update Description</button>
+                                                        </div>
+                                                    </form>
+                                                        <script>
+                                                        $('#about_desc').summernote({
+                                                            placeholder: 'About Description',
+                                                            tabsize: 2,
+                                                            height: 420,
+                                                            toolbar: [
+                                                                ['style', ['style']],
+                                                                ['font', ['bold', 'underline', 'clear']],
+                                                                ['color', ['color']],
+                                                                ['para', ['ul', 'ol', 'paragraph']],
+                                                                ['view', ['fullscreen', 'codeview', 'help']]
+                                                            ]
+                                                        });
+                                                        </script>
+                                                        <!-- <input type="text"
                                                             onchange='settingsUpdate(this, "about_desc")'
                                                             value="<?php echo $res['about_desc']; ?>"
                                                             class="form-control" id="about_desc"
-                                                            placeholder="Company Email Address" required>
+                                                            placeholder="Company Email Address" required> -->
                                                     </div>
                                                    
 

@@ -107,6 +107,15 @@ function changeDesc($data)
     return mysqli_query($con, $sql);
 }
 
+function changeAboutDescription($data)
+{
+    include 'connection.php';
+    $about_desc = $data['about_desc'];
+
+    $sql = "UPDATE settings SET about_desc = '$about_desc'";
+    return mysqli_query($con, $sql);
+}
+
 function editSettingImage($data, $img)
 {
     include 'connection.php';
